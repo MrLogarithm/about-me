@@ -1,2 +1,2 @@
 # personal-page
-Website with my CV, research interests, etc.
+Personal website hosting my CV, research interests, and links to selected projects.
