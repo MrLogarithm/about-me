@@ -1,0 +1,1092 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>From Signs to Numbers: Towards Richer Encodings of Ancient Text</title>
+
+		<link rel="stylesheet" href="../reveal.js/css/reset.css">
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="../reveal.js/css/theme/midtech.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugins/highlight/monokai.css">
+	</head>
+	<body style='width:100vw;height:100vh;overflow:hidden;'>
+		<div class="reveal">
+			<div class="slides">
+				<section class="hcenter vcenter">
+                    <h3>From Signs to Numbers</h3>
+
+                    <p>Towards Richer Encodings of Ancient Text</p>
+                </section>
+				<section>
+                    <img src='assets/P008141_obv.png' style='min-height:500px;position:fixed; left:0px;top:0px;' />
+                            <h3 style='position:absolute;left:50%;top:50px;font-size:200pt;transform: rotate(0deg);' class='fragment fade-in' data-fragment-index='1'>&#10549;</h3>
+                            <pre style='position: absolute;width:53%;left:50%;top:300px;' class='fragment fade-in' data-fragment-index='1'>&amp;P008141 = MDP 06, 359
+#atf: lang qpc
+@tablet
+@obverse
+1. M157 ,
+# header
+2. M319 |M059+M038~a| M301~ea M002 , 1(N14) 1(N01)# 2(N39B)#
+2B. M262#
+#line inbetween 02. and 03.
+3. M301~eb M002 , 1(N14) 3(N01) 2(N39B)
+4. M262~1 M297 , 2(N01) 2(N39B)#?
+5. M297~b M002 , 1(N14)
+6. M218
+#tr.en: (subscript)
+$ (scribal design 1 = SDxxxx)
+                            </pre>
+                </section>
+				<section class='hcenter'>
+                    <table>
+                       <tr><td>
+                           <div class='headshot'>
+                               <div style="background-image:url(assets/willis.jpeg);"></div>
+                           </div>
+                        <h3>
+                            Willis Monroe
+                        </h3>
+                        <p>
+                        <!--Dept. of Philosophy<br/>-->
+                        University of British Columbia
+                        </p>
+                           </td><td>
+                           <div class='headshot'>
+                               <div style="background-image:url(assets/kate.jpg);"></div>
+                           </div>
+                        <h3>
+                            Kathryn Kelley
+                        </h3>
+                        <p>
+                        <!--Dept. of Near and Middle Eastern Civilizations<br/>-->
+                        University of Toronto
+                        </p>
+                        </td></tr>
+                        <tr><td>
+                           <div class='headshot'>
+                               <div style="background-image:url(assets/anoop.png);"></div>
+                           </div>
+                        <h3>
+                            Anoop Sarkar
+                        </h3>
+                        <p>
+                        <!--School of Computing Science
+                        <br/>-->Simon Fraser University
+                        </p>
+                            </td><td>
+                           <div class='headshot'>
+                               <div style="background-image:url(assets/logan.jpg);"></div>
+                           </div>
+                        <h3>
+                            Logan Born
+                        </h3>
+                        <p><!--School of Computing Science
+                        <br/>-->Simon Fraser University
+                        </p>
+                            </td></tr>
+                   </table>
+                   <br/>
+                   <p>
+                   And former members <b>Nishant Kambhatla</b> and <b>Carolyn Chen</b>
+                   </p>
+                </section>
+				<section>
+                    <h3>Outline</h3>
+                    <p class='hcenter'>
+                    To what extent must <b>quantitative, machine-readable<br/>encodings</b> of text <b>sacrifice qualitative information?</b>
+                    <!--How to encode (ancient) text <b>without</b> sacrificing nuances and qualitative judgments?-->
+                    </p>
+                    <ul>
+                        <li class="fragment fade-in-then-semi-out">Part I: A Proto-Elamite Case Study</li>
+                        <ul>
+                            <li class="fragment fade-in-then-semi-out">...the data</li>
+                            <li class="fragment fade-in-then-semi-out">...the encoding</li>
+                            <li class="fragment fade-in-then-semi-out">...the implications</li>
+                        </ul>
+                        <li class="fragment fade-in-then-semi-out">Part II: Richer Encodings through Machine Learning</li>
+                        <ul>
+                            <li class="fragment fade-in-then-semi-out">Techniques</li> 
+                            <li class="fragment fade-in-then-semi-out">Multi-Modal Representations</li>
+                            <li class="fragment fade-in-then-semi-out">Levels of Detail</li>
+                        </ul>
+                    </ul>
+                    <p class="fragment fade-in">
+
+                    <!--to inspire <b>critical reflection</b> about text encodings
+                    and the <b>extent to which these encodings need to sacrifice qualitative information</b>.
+                    -->
+                    </p>
+                </section>
+                <section class='vcenter hcenter'>
+                    <h3>Part I</h3>
+                    <p>A Proto-Elamite Case Study</p>
+                </section>
+                <section>
+                    <section>
+                        <h3>
+                            Proto-Elamite
+                        </h3>
+                        <p>
+                        is an undeciphered script found on ~1700 clay tablets from late 4<sup>th</sup> to early 3<sup>rd</sup> millennium BCE Iran.
+                        </p>
+
+                        <div class='r-stack' style="justify-content: center; position: relative;">
+                            <img src='assets/P008141_obv.png' width='90%' />
+                            <img src='assets/P008036_obv.png' width='90%' class='fragment fade-in-then-out' data-fragment-index="5"/>
+                            <img src='assets/P008036_obv_hilite.png' width='90%' class='fragment fade-in-then-out' data-fragment-index="6"/>
+                            <h3 style="position:absolute;left:200px;top:120px;color:white;font-size:65pt;" class='fragment fade-in-then-out' data-fragment-index="6">?</h3>
+                        </div>
+
+                        <p>
+                        Challenging to encode!
+                        <span class='fragment fade-in' data-fragment-index="1">
+                            <span class='fragment highlight-current-red' data-fragment-index="1">
+                            Uses an unknown script 
+                            </span>
+                        </span>
+                        <span class='fragment fade-in' data-fragment-index="2">
+                            <span class='fragment highlight-current-red' data-fragment-index="2">
+                            to write an unknown language
+                            </span>
+                        </span>
+                        <span class='fragment fade-in' data-fragment-index="3">
+                            <span class='fragment highlight-current-red' data-fragment-index="3">
+                            , without word boundaries
+                            </span>
+                        </span>
+                        <span class='fragment fade-in' data-fragment-index="4">
+                            <span class='fragment highlight-current-red' data-fragment-index="4">
+                            , obscured by millennia of damage.
+                            </span>
+                        </span>
+                        </p>
+                    </section>
+                    <!--<section>
+                        <div class='r-stack hcenter' style='justify-content: center;'>
+                            <h3 class='fragment fade-out' data-fragment-index="1">
+                            How do we<br/>
+                            quantify this data?
+                            </h3>
+                            <h3 class='fragment fade-in' data-fragment-index="1">
+                            How do we<br/>
+                            encode this data in a machine-readable format?
+                            </h3>
+                        </div>
+                        <p class='fragment fade-in' data-fragment-index="2">
+                        ...while preserving the many uncertainties and qualitative judgments which may give useful insights for decipherment?
+                        </p>
+                    </section>-->
+                    <section>
+                        <h3>ASCII Transliteration Format (ATF)</h3>
+                        <p>
+                        Thanks to the Cuneiform Digital Library Initiative (CDLI) and Dr. Jacob Dahl!
+                        </p>
+
+                        <div style='position:relative;'>
+                            <img src='assets/P008141_obv.png' width='39%' style='margin:0;'/>
+                            <div style='position:absolute;left:470px;top:20px;width:100px;height:150px;border:12px solid red; border-radius:40px;' class='fragment fade-in-then-out' data-fragment-index='1'>
+                            </div>
+                            <span style='color:red;position:absolute;left:350px;top:-60px;font-size:170pt;transform: rotate(0deg);' class='fragment fade-in-then-out' data-fragment-index='3'>&#8612;</span>
+                            <span style='color:red;position:absolute;left:330px;top:60px;font-size:200pt;transform: rotate(0deg);' class='fragment fade-in-then-out' data-fragment-index='4'>&#8629;</span>
+                            <span style='color:red;position:absolute;left:330px;top:180px;font-size:200pt;transform: rotate(0deg);' class='fragment fade-in-then-out' data-fragment-index='5'>&#8629;</span>
+                            
+                            <pre style='display: inline-block; width:52%;'>&amp;P008141 = MDP 06, 359
+#atf: lang qpc
+@tablet
+<span class='fragment highlight-current-red' data-fragment-index="2">@obverse</span>
+1. <span class='fragment highlight-current-red' data-fragment-index="1"><span class='fragment highlight-current-red' data-fragment-index='6'>M157</span></span> ,
+# header
+2. <span class='fragment highlight-current-red' data-fragment-index='6'>M319</span> <span class='fragment highlight-current-red' data-fragment-index='6'>|M059+M038~a|</span> <span class='fragment highlight-current-red' data-fragment-index='6'>M301~ea</span> <span class='fragment highlight-current-red' data-fragment-index='6'>M002</span> , <span class='fragment highlight-current-red' data-fragment-index='7'>1(N14)</span> <span class='fragment highlight-current-red' data-fragment-index='7'>1(N01)#</span> <span class='fragment highlight-current-red' data-fragment-index='7'>2(N39B)#</span>
+2B. <span class='fragment highlight-current-red' data-fragment-index='6'>M262#</span>
+#line inbetween 02. and 03.
+3. <span class='fragment highlight-current-red' data-fragment-index='6'>M301~eb</span> <span class='fragment highlight-current-red' data-fragment-index='6'>M002</span> , <span class='fragment highlight-current-red' data-fragment-index='7'>1(N14)</span> <span class='fragment highlight-current-red' data-fragment-index='7'>3(N01)</span> <span class='fragment highlight-current-red' data-fragment-index='7'>2(N39B)</span>
+4. <span class='fragment highlight-current-red' data-fragment-index='6'>M262~1</span> <span class='fragment highlight-current-red' data-fragment-index='6'>M297</span> , <span class='fragment highlight-current-red' data-fragment-index='7'>2(N01)</span> <span class='fragment highlight-current-red' data-fragment-index='7'>2(N39B)#?</span>
+5. <span class='fragment highlight-current-red' data-fragment-index='6'>M297~b</span> <span class='fragment highlight-current-red' data-fragment-index='6'>M002</span> , <span class='fragment highlight-current-red' data-fragment-index='7'>1(N14)</span>
+6. <span class='fragment highlight-current-red' data-fragment-index='6'>M218</span>
+#tr.en: (subscript)
+$ (scribal design 1 = SDxxxx)
+                            </pre>
+                        </div>
+                        <aside class='notes'>
+                            Now one way to do this, and a way which has already been used for many ancient corpora, is called ATF, or the ASCII transliteration format.
+
+                            And this looks something like what you see on slide here, ...
+                            - describe
+                            - adequate for deciphered scripts; not as useful for undeciphered ones. elaborate shortcomings
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Implications of ATF</h3>
+                        <p>
+                        Emphasizes work-in-progress sign <em>names</em> to the detriment of sign shapes:
+                        </p>
+
+                        <div class='hcenter'>
+                            <div class='fragment fade-in'>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M157+M057.svg' width='200px'>
+                            <p>M157+M057</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M157.svg' width='200px'>
+                            <p>M157</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M057.svg' width='200px'>
+                            <p>M057</p>
+                        </div>
+                            </div>
+
+                        <br/>
+                        <div class='hcenter sign-box fragment fade-in'>
+                            <img src='assets/M296+M296.svg' width='200px'>
+                            <p>M296+M296</p>
+                        </div>
+                        <div class='hcenter sign-box fragment fade-in'>
+                            <img src='assets/M157+M057.svg' width='200px'>
+                            <p>M157+M057</p>
+                        </div>
+                        <div class='hcenter sign-box fragment fade-in'>
+                            <img src='assets/M059+M038-A.svg' width='200px'>
+                            <p>M059+M038~a</p>
+                        </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Implications of ATF</h3>
+                        <p>
+                        Emphasizes work-in-progress sign <em>names</em> to the detriment of sign shapes:
+                        </p>
+
+                        <div class='hcenter'>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M352-B.svg' width='200px'>
+                            <p>M352~b</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M352-C.svg' width='200px'>
+                            <p>M352~c</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M352-E.svg' width='200px'>
+                            <p>M352~e</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M352-N.svg' width='200px'>
+                            <p>M352~n</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M352-O.svg' width='200px'>
+                            <p>M352~o</p>
+                        </div>
+
+                        <br/>
+                        <div class='hcenter sign-box fragment fade-in'>
+                            <img src='assets/M218.svg' width='200px'>
+                            <p>M218</p>
+                        </div>
+                        <span class='fragment fade-in'>
+                        <div class='hcenter sign-box'>
+                            <div style='position:relative;'>
+                            <img src='assets/M218-B.svg' width='200px'>
+                            <img src='assets/M218-B-hilite.svg' width='200px' style='position:absolute;top:0px;left:5px; transform:rotate(90deg); 
+                            filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%) drop-shadow(0px 0px 5px red);
+                            ' class='fragment fade-in-then-out'/>
+                            <p>M218~b</p>
+                            </div>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M218-C.svg' width='200px'>
+                            <p>M218~c</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M218-G.svg' width='200px'>
+                            <p>M218~g</p>
+                        </div>
+                        </span>
+
+                        <span class='fragment fade-in'>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M219.svg' width='200px'>
+                            <p>M219</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M220.svg' width='200px'>
+                            <p>M220</p>
+                        </div>
+                        </span>
+                        <div class='hcenter sign-box fragment fade-in'>
+                            <img src='assets/M217.svg' width='200px'>
+                            <p>M217</p>
+                        </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Implications of ATF</h3>
+                        <p>
+                        Extensive variation <em>is</em> recorded, but hard to intuit from sign names.
+                        </p>
+                        <p class='manicule fragment fade-in'>
+                        Challenging to get a holistic view of sign use <b>and</b> appearance.
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Implications of ATF</h3>
+                        <p>
+                        Very fine-grained distinctions:
+                        </p>
+
+                        <div class='hcenter'>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M038-A.svg' width='200px'>
+                            <p>M038~a</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M038-B.svg' width='200px'>
+                            <p>M038~b</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M038-C.svg' width='200px'>
+                            <p>M038~c</p>
+                        </div>
+                        </div>
+                        <p class='fragment fade-in'>
+                        Creates <b>many rare signs</b>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Artificial Scarcity</h3>
+                        Common sequences look rarer than they are:
+                        <div class='hcenter' style='transform:scale(0.8);'>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M388.svg' width='200px'>
+                            <p>M388</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M066.svg' width='200px'>
+                            <p>M066</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M352-O.svg' width='200px'>
+                            <p>M352~o</p>
+                        </div>
+                        <br/>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M388.svg' width='200px'>
+                            <p>M388</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M066.svg' width='200px'>
+                            <p>M066</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M352-N.svg' width='200px'>
+                            <p>M352~n</p>
+                        </div>
+                        <br/>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M388.svg' width='200px'>
+                            <p>M388</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M066-A.svg' width='200px'>
+                            <p>M066~a</p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                            <img src='assets/M352-O.svg' width='200px'>
+                            <p>M352~o</p>
+                        </div>
+                        </div>
+
+                    </section>
+                    <section>
+                        <h3>The Tradeoff</h3>
+                        <div class='hcenter'>
+                            <b>Precise</b> but <b>Sparse</b> 
+                            <br/>
+                            vs 
+                            <br/>
+                            <b>Abstract</b> but <b>Interpretable</b>
+                        </div>
+
+                        <br/>
+                        <p class='hcenter fragment fade-in'>
+                        How to mediate between these levels of detail?
+                        </p>
+                        <p class='hcenter fragment fade-in'>
+                        How to tell which details most need to be preserved?
+                        </p>
+                        <br/>
+                        <p class='hcenter fragment fade-in'>
+                        ...<b>efficiently</b>, without rebuilding the data from scratch?
+                        </p>
+                    </section>
+                </section>
+                <section class='hcenter vcenter'>
+                    <h3>Part II</h3>
+                    <p>Richer Encodings Through Machine Learning</p>
+                </section>
+                <section>
+                    <section>
+                        <div class='r-stack' style='justify-content:left;'>
+                          <h3 class='fragment fade-out' style='margin:0;' data-fragment-index="1">Technobabble</h3>
+                          <h3 class='fragment fade-in' style='margin:0;' data-fragment-index="1">Technique</h3>
+                        </div>
+                        <p class='hcenter fragment semi-fade-out' data-fragment-index="1">
+                        Incorporate sign appearance using
+                        </p>
+                        <p class='hcenter'>
+                        <b class='fragment semi-fade-out' data-fragment-index="1">dense </b>
+                        <b class='r-stack' style='display:inline-grid;'>
+                            <b class='fragment semi-fade-out' data-fragment-index="1">
+                                sign 
+                            </b>
+                            <b class='fragment fade-in' data-fragment-index="3">
+                                sign 
+                            </b>
+                        </b>
+                        <b>embeddings</b></p>
+                        <p class='hcenter fragment semi-fade-out' data-fragment-index="1">
+                        learned by a 
+                        </p>
+                        <p class='hcenter fragment semi-fade-out' data-fragment-index="1">
+                        <b>multi-modal language model</b>
+                        </p>
+
+                        <div class='hcenter'>
+                        <div style='display:inline-block;'>
+                        <p class='hcenter'>
+                        <span class='fragment fade-in' data-fragment-index="3">M218</span>
+                        <b style='padding-left:45px;' class='fragment fade-in' data-fragment-index="2">
+                        [-5.76, 2.03, -0.04, ...]
+                        </b>
+                        </p>
+                        <p class='hcenter'>
+                        <span class='fragment fade-in' data-fragment-index="3">M220</span>
+                        <b style='padding-left:45px;' class='fragment fade-in' data-fragment-index="2">
+                        [5.08, 1.80, -2.65, ...]
+                        </b>
+                        </p>
+                        <p class='hcenter'>
+                        <span class='fragment fade-in' data-fragment-index="3">M367</span>
+                        <b style='padding-left:45px;' class='fragment fade-in' data-fragment-index="2">
+                        [1.44, 0.22, 3.05, ...]
+                        </b>
+                        </p>
+                        </div>
+
+                        <img src='assets/embeds-2d.svg' width="400px" style='position:relative;top:100px;padding-left:50px;'class='fragment fade-in'/>
+                        </div>
+                    </section>
+                    <section>
+                    <h3>Nothing New Under the Sun</h3>
+                    <blockquote>
+                        <!--<p>the Amorite Computer Project [...] began to germinate in 1960</p>-->
+
+                        <p>
+                        The first step [...] was to put the transcribed names onto punch cards for input to the computer.</p>
+                    </blockquote>
+                    <p class='flush-right'>
+                    &mdash; Gelb 1980:10
+                    </p>
+                    <!-- https://oi.uchicago.edu/sites/oi.uchicago.edu/files/uploads/shared/docs/as21.pdf -->
+                    <div class='r-stack hcenter'>
+                        <img class='fragment fade-out' data-fragment-index="1" src="assets/ibm.7090.jpg" width="60%"/>
+                        <!-- https://thisdayintechhistory.com/wp-content/uploads/2013/11/ibm.7090.jpg -->
+                        <img class='fragment fade-in' data-fragment-index="1" src="assets/punchcard.jpg" width="60%"/>
+                        <!-- https://upload.wikimedia.org/wikipedia/commons/5/58/FortranCardPROJ039.agr.jpg -->
+                    </div>
+                    </section>
+                    <!--<section>
+
+                    <blockquote>
+                    Punch-Card Representation of the Names for Input to the Computer Program. 
+                    The
+                    names are punched one to a card. 
+                    <span class='fragment highlight-current-red' data-fragment-index="1">
+                        The transcription of the name begins in column 1. The transliteration of the cuneiform begins with an asterisk in column 25. 
+                    </span>
+                    References begin with a period in column 55. 
+                    The transcription is punched in the following format: the 
+                    [...] 
+                    <span class='fragment highlight-current-red' data-fragment-index="2">
+                        elements are separated by + signs; within each element the morphemes (prefixes, stems, suffixes) are separated by - signs.
+                    </span>
+
+                    [...]
+                    Three-element names are too long to fit in one line, so they occupy two
+                    : the first two elements appear side by side, as in a two-element name, and the remainder of that first line is left blank; on the next line the third element is aligned directly below the second, and the transliteration and reference(s) follow.
+                    [...]
+                    <span class='fragment highlight-current-red' data-fragment-index="3">
+                        If there be 4 elements, the fourth is not processed.
+                    </span>
+                    </blockquote>
+                    <p class='flush-right'>
+                    &mdash; Gelb 1980:10
+                    </p>
+                    </section>-->
+                    <section>
+                        <h3>Language Modeling</h3>
+                        <p>
+                        What word comes next?
+                        </p>
+
+                        <div class='hcenter'>
+                        <p style='display:inline;font-style:italic;'>
+                        nobody should touch the wording of my 
+                        </p>
+                        <div class='r-stack' style='display:inline-grid;font-style:italic;position:relative;'>
+                          <u class='fragment fade-out' data-fragment-index="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+                          <span class='fragment fade-in-then-out ex' data-fragment-index="1"><u>book</u></span>
+                          <span class='fragment fade-in-then-out ex' data-fragment-index="2"><u>letter</u></span>
+                          <span class='fragment fade-in-then-out ex' data-fragment-index="3"><u>llama</u></span>
+                          <span class='fragment fade-in check' data-fragment-index="4"><u>tablet</u></span>
+                        </div>
+                        </div>
+
+                        <div class='fragment fade-in'>
+                        <div style='position:relative;'>
+                        <p class='hcenter' style='font-size:100pt;'>
+                        &dArr;
+                        <div style='position:absolute;left:55%;top:0px;' class='fragment shrink semi-fade-out'>
+                            \[\begin{aligned}
+                            \theta_j &amp; = \theta_j - \alpha\frac{\partial}{\partial\theta_j}J(\theta)
+                            \end{aligned} \]
+                        </div>
+                        </p>
+                        </div>
+
+                        <br/>
+
+                        <div class='fragment fade-in' style='position:absolute;left:-200px;'>
+                            <div class='hcenter'>
+                            <img src='assets/tsne1.svg' width="650px"/>
+                            <p style='position:relative;top:-100px;'>
+                            Semantic Relations
+                            </p>
+                            <p style='position:relative;top:-110px;padding:0;margin:0;font-size:20pt; opacity: 0.5;'>(image via vectors.nlpl.eu)</p>
+                            </div>
+                        </div>
+                        <div class='fragment fade-in' style='position:absolute;left:500px;'>
+                            <div class='hcenter'>
+                            <img src='assets/projector.svg' width="450px"/>
+                            <p style='position:relative;top:-0px;'>
+                            Morphology
+                            </p>
+                            <p style='position:relative;top:-10px;padding:0;margin:0;font-size:20pt; opacity: 0.5;'>
+                            (image via projector.tensorflow.org)
+                            </p>
+                            </div>
+                        </div>
+                        <div class='fragment fade-in' style='position:absolute;right:-100px;'>
+                            <div class='hcenter'>
+                            <img src='assets/bias.png' width="600px"/>
+                            <p style='position:relative;top:-0px;'>
+                            World-Knowledge
+                            </p>
+                            <p style='position:relative;top:-10px;padding:0;margin:0;font-size:20pt; opacity: 0.5;'>
+                            (image from Garg et al. 2018)
+                            </p>
+                            </div>
+                        </div>
+
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Image-Aware Language Modeling</h3>
+                        What sign comes next?
+                        <div class='r-stack' style='justify-content:center;'>
+                            <span class='fragment fade-out' data-fragment-index="1">M131+M388 M004 M263 M218 <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>
+                            <span class='fragment fade-in sign-box' style='position:relative;' data-fragment-index="1">
+                                <img src='assets/M131+M388.svg' width="200px">
+                                <img src='assets/M004.svg' width="200px">
+                                <img src='assets/M263.svg' width="200px">
+                                <img src='assets/M218.svg' width="200px">
+                                <h3 style='position:absolute; top:85px; right:-85px;'>?</h3>
+                            </span>
+                        </div>
+                        <p class='fragment fade-in'>
+                        The resulting embeddings reflect sign shape <b>as well as</b> context!
+                        </p>
+                    </section>
+                    <section style='height:100%;'>
+                        <div class='lmembed' id='embedding' style='background:black;'>
+                            <span class='fragment fade-in-then-out' id='zoom1'></span>
+                            <span class='fragment fade-in-then-out' id='zoom2'></span>
+                            <span class='fragment fade-in-then-out' id='zoom3'></span>
+                            <span class='fragment fade-in-then-out' id='zoom4'></span>
+                            <span class='fragment fade-in-then-out' id='zoom5'></span>
+                            <span class='fragment fade-in-then-out' id='reset'></span>
+                        </div>
+                        <div class='lmembed' id='overlay1' style='opacity:0;'>
+                        </div>
+                        <div class='lmembed' id='overlay2' style='opacity:0;'>
+                        </div>
+                        <div class='lmembed' id='overlay3' style='opacity:0;'>
+                        </div>
+                        <div class='lmembed' id='overlay4' style='opacity:0;'>
+                        </div>
+                        <div class='lmembed' id='overlay5' style='opacity:0;'>
+                        </div>
+
+                        <span class='fragment fade-in' style='font-size:25pt; position:absolute;left:-50px;bottom:250px;'>
+                            <p>
+                            ... <b>M305</b> M388 M387 M315 ...
+                            </p>
+                            <p>
+                            ... <b>M305</b> M388 M009 M004 ...
+                            </p>
+                            <p>
+                            ... <b>M304</b> M388 M054 M380 ...
+                            </p>
+                        </span>
+                        <span class='fragment fade-in' style='font-size:25pt;text-align:right; position:absolute;right:0;top:0;'>
+                            <p>
+                            ... M388 M219 M352~o M315 <b>M297</b> ...
+                            </p>
+                            <p>
+                            ... M388 <b>M296</b> M263 M218 ...
+                            </p>
+                            <p>
+                            ... M388 M218 M314 <b>M297</b> ...
+                            </p>
+                        </span>
+                    </section>
+                    <section>
+                        <h3>
+                        Enriched Embeddings
+                        </h3>
+                        <p>
+                        Enable new and deeper analyses: esp. relation between complex graphemes and their parts (Born et al. 2021).
+                        </p>
+                        <img src='assets/parallel.svg' height="550px"/>
+                        <img src='assets/triangle.svg' height="550px"/>
+
+                        <p class='manicule'>
+                        Successfully restored visual information for a more holistic encoding
+                        </p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Abstracting Away the Details</h3>
+                        <p>
+                        Identify and remove subtle distinctions when they're not relevant to a given task.
+                        </p>
+
+                        <div class='hcenter'>
+                          <div class='hcenter sign-box'>
+                            <img src='assets/M038-A.svg' width='200px'>
+                            <p>M038~a</p>
+                          </div>
+                          <div class='hcenter sign-box'>
+                            <img src='assets/M038-B.svg' width='200px'>
+                            <p>M038~b</p>
+                          </div>
+                          <div class='hcenter sign-box'>
+                            <img src='assets/M038-C.svg' width='200px'>
+                            <p>M038~c</p>
+                          </div>
+                        </div>
+                        <p style='font-size:100pt;' class='hcenter fragment fade-in' data-fragment-index="1">
+                        &dArr;
+                        </p>
+                        <div class='hcenter fragment fade-in' data-fragment-index="1">
+                          <div style='background:rgba(255,0,0,0.25);border-radius:50px;display:inline-block;position:relative;'>
+                              <h4 style='position:absolute;left:calc(50% - 70px);top:5px;'>&quot;M038&prime;&quot;</h4>
+                          <div class='hcenter sign-box'>
+                            <img src='assets/M038-A.svg' width='200px'>
+                          </div>
+                          <div class='hcenter sign-box'>
+                            <img src='assets/M038-B.svg' width='200px'>
+                          </div>
+                          <div class='hcenter sign-box'>
+                            <img src='assets/M038-C.svg' width='200px'>
+                          </div>
+                          </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Components of the Model</h3>
+                        <div class='hcenter'>
+                        <div class='r-stack' style='display:inline-grid;'>
+                        <img src='assets/cluster-arch.svg' class='fragment fade-out' width='600px' data-fragment-index="1"/>
+                        <img src='assets/cluster-arch-1.svg' class='fragment fade-in-then-out' width='600px' data-fragment-index="1"/>
+                        <img src='assets/cluster-arch-2.svg' class='fragment fade-in-then-out' width='600px' data-fragment-index="2"/>
+                        <img src='assets/cluster-arch-3.svg' class='fragment fade-in' width='600px' data-fragment-index="3"/>
+                        </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Effect of Relabeling</h3>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td style='padding-right: 120px;'>
+                                    <div class='sign-box'>
+                                        <img src='assets/M305.svg' width='180px' />
+                                        <p>
+                                        M305</p>
+                                    </div>
+                                    <div class='sign-box'>
+                                        <img src='assets/M388.svg' width='180px' />
+                                        <p>
+                                        M388</p>
+                                    </div>
+                                </td>
+                                <td style='padding-left: 120px;'>
+                                    <div class='sign-box'>
+                                        <img src='assets/M296.svg' width='180px' />
+                                        <p>
+                                        M296</p>
+                                    </div>
+                                    <div class='sign-box' style='width:180px;'>
+                                        <img src='assets/M387.svg' height='30px' style='transform:translate(0px,-70px) rotate(90deg);' />
+                                        <p>
+                                        M387</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='padding-right: 120px;'>
+                                    <div class='sign-box'>
+                                        <img src='assets/M304.svg' width='180px' />
+                                        <p>
+                                    <div class='r-stack' style='display:inline-grid;'>
+                                      <span class='fragment highlight-current-red' data-fragment-index="4">
+                                        <span class='fragment fade-out' data-fragment-index="5">
+                                            M304
+                                        </span>
+                                      </span>
+                                      <span class='fragment fade-in-then-out' data-fragment-index="5">
+                                          <b>M305</b>
+                                      </span>
+                                      <span class='fragment fade-in' data-fragment-index="6">
+                                          M305
+                                      </span>
+                                    </div>
+                                    </p>
+
+                                    </div>
+                                    <div class='sign-box'>
+                                        <img src='assets/M388.svg' width='180px' />
+                                        <p>
+                                        M388</p>
+                                    </div>
+
+                                </td>
+                                <td style='padding-left: 120px;'>
+                                    <div class='sign-box'>
+                                        <img src='assets/M296.svg' width='180px' />
+                                        <p>
+                                    <div class='r-stack' style='display:inline-grid;'>
+                                      <span class='fragment highlight-current-red' data-fragment-index="2">
+                                        <span class='fragment fade-out' data-fragment-index="3">
+                                        M296 
+                                        </span>
+                                      </span>
+                                      <span class='fragment fade-in-then-out' data-fragment-index="3">
+                                          <b>M305</b>
+                                      </span>
+                                      <span class='fragment fade-in' data-fragment-index="4">
+                                          M296
+                                      </span>
+                                    </div>
+                                        </p>
+
+                                    </div>
+                                    <div class='sign-box'>
+                                        <img src='assets/M309.svg' width='180px' />
+                                        <p>
+                                        M309</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='padding-right: 120px;'>
+                                    <div class='sign-box'>
+                                        <img src='assets/M305.svg' width='180px' />
+                                        <p>
+                                        M305</p>
+                                    </div>
+                                    <div class='sign-box'>
+                                        <img src='assets/M388.svg' width='180px' />
+                                        <p>
+                                        M388</p>
+                                    </div>
+                                </td>
+                                <td style='padding-left: 120px;'>
+                                    <div class='sign-box'>
+                                        <img src='assets/M296.svg' width='180px' />
+                                        <p>
+                                        M296</p>
+                                    </div>
+                                    <div class='sign-box'>
+                                        <img src='assets/M072.svg' width='180px' />
+                                        <p>
+                                        M072</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h3>Clustering</h3>
+                        <p>
+                        Iteratively refine sign labels until we reach equilibrium.
+                        </p>
+
+                        <br/>
+                        <p class='fragment fade-in' data-fragment-index="1">
+                        Extra constraints:
+                        </p>
+                        <ul>
+                            <li class='fragment fade-in' data-fragment-index="1">Don't merge signs that look dissimilar.<br/>
+                                <div class='vcenter hcenter sign-box' style='width:100%;'>
+                                    <img src='assets/M217.svg'/>
+                                    <span style='display:inline-block;transform:translate(0,-75px);'>&ne;</span>
+                                    <img src='assets/M218.svg'/>
+                                </div>
+                            </li>
+                            <li class='fragment fade-in' data-fragment-index="2">Don't allow similar-looking signs to have distinct labels.
+                                <div class='vcenter hcenter sign-box' style='width:100%;'>
+                                    <img src='assets/M263.svg'/>
+                                    <span style='display:inline-block;transform:translate(0,-75px);'>=</span>
+                                    <img src='assets/M263-A.svg'/>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>The Simplified Dataset</h3>
+                        <div class='hcenter'>
+                            <p>1962 signs reduced to just 298!</p>
+
+                            <p class='fragment fade-in' id='show_clusters'>Obtained through sign mergers:</p>
+                        <div class='cluster'>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M296.svg' width='200px'>
+                          <p>
+                            M296
+                          </p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M297-B.svg' width='200px'>
+                          <p>
+                            M297~b
+                          </p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M302-F.svg' width='200px'>
+                          <p>
+                            M302~f
+                          </p>
+                        </div>
+                        </div>
+
+                        <div class='cluster'>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M188-E.svg' width='200px'>
+                          <p>
+                          M188~e
+                          </p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M188-G.svg' width='200px'>
+                          <p>
+                          M188~g
+                          </p>
+                        </div>
+                        </div>
+
+                        <div class='cluster'>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M263.svg' width='200px'>
+                          <p>
+                            M263
+                          </p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M263-A.svg' width='200px'>
+                          <p>
+                            M263~a
+                          </p>
+                        </div>
+                        </div>
+
+                        <div class='cluster'>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M261-A.svg' width='200px'>
+                          <p>
+                            M261~a
+                          </p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M268-C.svg' width='200px'>
+                          <p>
+                            M268~c
+                          </p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M269.svg' width='200px'>
+                          <p>
+                            M269
+                          </p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M268-D.svg' width='200px'>
+                          <p>
+                            M268~d
+                          </p>
+                        </div>
+                        </div>
+
+                        <div class='cluster'>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M292.svg' width='200px'>
+                          <p>
+                            M292
+                          </p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M292-C.svg' width='200px'>
+                          <p>
+                        M292~c 
+                          </p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M292-F.svg' width='200px'>
+                          <p>
+                        M292~f
+                          </p>
+                        </div>
+                        </div>
+
+                        <div class='cluster'>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M387-CA.svg' width='200px'>
+                          <p>
+                            M387~ca
+                          </p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M387-EE.svg' width='200px'>
+                          <p>
+                          M387~ee
+                          </p>
+                        </div>
+                        <div class='hcenter sign-box'>
+                          <img src='assets/M387-C.svg' width='200px'>
+                          <p>
+                          M387~c
+                          </p>
+                        </div>
+                        </div>
+                        </div>
+                    </section>
+                </section>
+                <section class='hcenter vcenter'>
+                    <h3>Summary</h3>
+                </section>
+                <section>
+                    <h3>In Sum</h3>
+                    <p>
+                    Machine learning can't solve all your problems...
+                    <br/>
+                    <span class='fragment fade-in'>
+                        ...but it can <b>meaningfully enrich your data</b>
+                    </span>
+                    <span class='fragment fade-in'>
+                        and can <b>enable and inform challenging quantitative assesments</b> of qualitative data.
+                    </span>
+                    </p>
+                    <br/>
+                    <h3 class='hcenter fragment fade-in'>
+                        Thank You!</h3>
+                </section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/js/reveal.js"></script>
+		<script src="../reveal.js/plugins/notes/notes.js"></script>
+		<script src="../reveal.js/plugins/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugins/highlight/highlight.js"></script>
+        <script src="../reveal.js/plugins/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+                width: 1920,
+                height: 1080,
+
+				hash: true,
+                center: false,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+            Reveal.on( 'fragmentshown', event => {
+                switch(event.fragment.id) {
+                    case 'zoom1':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(510px, 80px)';
+                        document.getElementById("overlay1").style.transform  = 'scale(3) translate(510px, 80px)';
+                        document.getElementById("overlay2").style.transform  = 'scale(3) translate(510px, 80px)';
+                        document.getElementById("overlay1").style.opacity = '1';
+                        break;
+                    case 'zoom2':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay1").style.transform  = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay2").style.transform  = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay3").style.transform  = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay1").style.opacity = '0';
+                        document.getElementById("overlay2").style.opacity = '1';
+                        break;
+                    case 'zoom3':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay2").style.transform  = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay3").style.transform  = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay4").style.transform  = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay2").style.opacity = '0';
+                        document.getElementById("overlay3").style.opacity = '1';
+                        break;
+                    case 'zoom4':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay3").style.transform  = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay4").style.transform  = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay5").style.transform  = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay3").style.opacity = '0';
+                        document.getElementById("overlay4").style.opacity = '1';
+                        break;
+                    case 'zoom5':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(0px, 230px)';
+                        document.getElementById("overlay4").style.transform  = 'scale(3) translate(0px, 230px)';
+                        document.getElementById("overlay5").style.transform  = 'scale(3) translate(0px, 230px)';
+                        document.getElementById("overlay4").style.opacity = '0';
+                        document.getElementById("overlay5").style.opacity = '1';
+                        break;
+                    case 'reset':
+                        document.getElementById("embedding").style.transform = '';
+                        document.getElementById("overlay1").style.transform  = '';
+                        document.getElementById("overlay2").style.transform  = '';
+                        document.getElementById("overlay3").style.transform  = '';
+                        document.getElementById("overlay4").style.transform  = '';
+                        document.getElementById("overlay5").style.transform  = '';
+                        document.getElementById("overlay5").style.opacity = '0';
+                        break;
+                    case 'show_clusters':
+                                    for (elem of document.getElementsByClassName('cluster')) {
+                                                    elem.className += ' bg-fade';
+                                                };
+                }
+            });
+		</script>
+	</body>
+</html>
