@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>From Signs to Numbers: Towards Richer Encodings of Ancient Text</title>
+
+		<link rel="stylesheet" href="../reveal.js/css/reset.css">
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="../reveal.js/css/theme/midtech.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugins/highlight/monokai.css">
+	</head>
+	<body style='width:100vw;height:100vh;overflow:hidden;'>
+		<div class="reveal">
+			<div class="slides">
+				<section class="hcenter vcenter">
+                </section>
+				<section class='hcenter'>
+                    <table>
+                       <tr><td>
+                           <div class='headshot'>
+                               <div style="background-image:url(assets/willis.jpeg);"></div>
+                           </div>
+                        <h3>
+                            Willis Monroe
+                        </h3>
+                        <p>
+                        <!--Dept. of Philosophy<br/>-->
+                        University of British Columbia
+                        </p>
+                           </td><td>
+                           <div class='headshot'>
+                               <div style="background-image:url(assets/kate.jpg);"></div>
+                           </div>
+                        <h3>
+                            Kathryn Kelley
+                        </h3>
+                        <p>
+                        <!--Dept. of Near and Middle Eastern Civilizations<br/>-->
+                        University of Toronto
+                        </p>
+                        </td></tr>
+                        <tr><td>
+                           <div class='headshot'>
+                               <div style="background-image:url(assets/anoop.png);"></div>
+                           </div>
+                        <h3>
+                            Anoop Sarkar
+                        </h3>
+                        <p>
+                        <!--School of Computing Science
+                        <br/>-->Simon Fraser University
+                        </p>
+                            </td><td>
+                           <div class='headshot'>
+                               <div style="background-image:url(assets/logan.jpg);"></div>
+                           </div>
+                        <h3>
+                            Logan Born
+                        </h3>
+                        <p><!--School of Computing Science
+                        <br/>-->Simon Fraser University
+                        </p>
+                            </td></tr>
+                   </table>
+                   <br/>
+                   <p>
+                   And former members <b>Nishant Kambhatla</b> and <b>Carolyn Chen</b>
+                   </p>
+                </section>
+                <section>
+                    <section>
+                        <h3>ASCII Transliteration Format (ATF)</h3>
+                        <p>
+                        Thanks to the Cuneiform Digital Library Initiative (CDLI) and Dr. Jacob Dahl!
+                        </p>
+
+                        <div style='position:relative;'>
+                            <img src='assets/P008141_obv.png' width='39%' style='margin:0;'/>
+                            <div style='position:absolute;left:470px;top:20px;width:100px;height:150px;border:12px solid red; border-radius:40px;' class='fragment fade-in-then-out' data-fragment-index='1'>
+                            </div>
+                            <span style='color:red;position:absolute;left:350px;top:-60px;font-size:170pt;transform: rotate(0deg);' class='fragment fade-in-then-out' data-fragment-index='3'>&#8612;</span>
+                            <span style='color:red;position:absolute;left:330px;top:60px;font-size:200pt;transform: rotate(0deg);' class='fragment fade-in-then-out' data-fragment-index='4'>&#8629;</span>
+                            <span style='color:red;position:absolute;left:330px;top:180px;font-size:200pt;transform: rotate(0deg);' class='fragment fade-in-then-out' data-fragment-index='5'>&#8629;</span>
+                            
+                            <pre style='display: inline-block; width:52%;'>&amp;P008141 = MDP 06, 359
+#atf: lang qpc
+@tablet
+<span class='fragment highlight-current-red' data-fragment-index="2">@obverse</span>
+1. <span class='fragment highlight-current-red' data-fragment-index="1"><span class='fragment highlight-current-red' data-fragment-index='6'>M157</span></span> ,
+# header
+2. <span class='fragment highlight-current-red' data-fragment-index='6'>M319</span> <span class='fragment highlight-current-red' data-fragment-index='6'>|M059+M038~a|</span> <span class='fragment highlight-current-red' data-fragment-index='6'>M301~ea</span> <span class='fragment highlight-current-red' data-fragment-index='6'>M002</span> , <span class='fragment highlight-current-red' data-fragment-index='7'>1(N14)</span> <span class='fragment highlight-current-red' data-fragment-index='7'>1(N01)#</span> <span class='fragment highlight-current-red' data-fragment-index='7'>2(N39B)#</span>
+2B. <span class='fragment highlight-current-red' data-fragment-index='6'>M262#</span>
+#line inbetween 02. and 03.
+3. <span class='fragment highlight-current-red' data-fragment-index='6'>M301~eb</span> <span class='fragment highlight-current-red' data-fragment-index='6'>M002</span> , <span class='fragment highlight-current-red' data-fragment-index='7'>1(N14)</span> <span class='fragment highlight-current-red' data-fragment-index='7'>3(N01)</span> <span class='fragment highlight-current-red' data-fragment-index='7'>2(N39B)</span>
+4. <span class='fragment highlight-current-red' data-fragment-index='6'>M262~1</span> <span class='fragment highlight-current-red' data-fragment-index='6'>M297</span> , <span class='fragment highlight-current-red' data-fragment-index='7'>2(N01)</span> <span class='fragment highlight-current-red' data-fragment-index='7'>2(N39B)#?</span>
+5. <span class='fragment highlight-current-red' data-fragment-index='6'>M297~b</span> <span class='fragment highlight-current-red' data-fragment-index='6'>M002</span> , <span class='fragment highlight-current-red' data-fragment-index='7'>1(N14)</span>
+6. <span class='fragment highlight-current-red' data-fragment-index='6'>M218</span>
+#tr.en: (subscript)
+$ (scribal design 1 = SDxxxx)
+                            </pre>
+                        </div>
+                    </section>
+                </section>
+                    <section style='height:100%;'>
+                        <div class='lmembed' id='embedding' style='background:black;'>
+                            <span class='fragment fade-in-then-out' id='zoom1'></span>
+                            <span class='fragment fade-in-then-out' id='zoom2'></span>
+                            <span class='fragment fade-in-then-out' id='zoom3'></span>
+                            <span class='fragment fade-in-then-out' id='zoom4'></span>
+                            <span class='fragment fade-in-then-out' id='zoom5'></span>
+                            <span class='fragment fade-in-then-out' id='reset'></span>
+                        </div>
+                        <div class='lmembed' id='overlay1' style='opacity:0;'>
+                        </div>
+                        <div class='lmembed' id='overlay2' style='opacity:0;'>
+                        </div>
+                        <div class='lmembed' id='overlay3' style='opacity:0;'>
+                        </div>
+                        <div class='lmembed' id='overlay4' style='opacity:0;'>
+                        </div>
+                        <div class='lmembed' id='overlay5' style='opacity:0;'>
+                        </div>
+
+                        <span class='fragment fade-in' style='font-size:25pt; position:absolute;left:-50px;bottom:250px;'>
+                            <p>
+                            ... <b>M305</b> M388 M387 M315 ...
+                            </p>
+                            <p>
+                            ... <b>M305</b> M388 M009 M004 ...
+                            </p>
+                            <p>
+                            ... <b>M304</b> M388 M054 M380 ...
+                            </p>
+                        </span>
+                        <span class='fragment fade-in' style='font-size:25pt;text-align:right; position:absolute;right:0;top:0;'>
+                            <p>
+                            ... M388 M219 M352~o M315 <b>M297</b> ...
+                            </p>
+                            <p>
+                            ... M388 <b>M296</b> M263 M218 ...
+                            </p>
+                            <p>
+                            ... M388 M218 M314 <b>M297</b> ...
+                            </p>
+                        </span>
+                    </section>
+                    <section>
+                        <img src='assets/parallel.svg' height="550px"/>
+                        <img src='assets/triangle.svg' height="550px"/>
+                    </section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/js/reveal.js"></script>
+		<script src="../reveal.js/plugins/notes/notes.js"></script>
+		<script src="../reveal.js/plugins/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugins/highlight/highlight.js"></script>
+        <script src="../reveal.js/plugins/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+                width: 1920,
+                height: 1080,
+
+				hash: true,
+                center: false,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+            Reveal.on( 'fragmentshown', event => {
+                switch(event.fragment.id) {
+                    case 'zoom1':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(510px, 80px)';
+                        document.getElementById("overlay1").style.transform  = 'scale(3) translate(510px, 80px)';
+                        document.getElementById("overlay2").style.transform  = 'scale(3) translate(510px, 80px)';
+                        document.getElementById("overlay1").style.opacity = '1';
+                        break;
+                    case 'zoom2':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay1").style.transform  = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay2").style.transform  = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay3").style.transform  = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay1").style.opacity = '0';
+                        document.getElementById("overlay2").style.opacity = '1';
+                        break;
+                    case 'zoom3':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay2").style.transform  = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay3").style.transform  = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay4").style.transform  = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay2").style.opacity = '0';
+                        document.getElementById("overlay3").style.opacity = '1';
+                        break;
+                    case 'zoom4':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay3").style.transform  = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay4").style.transform  = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay5").style.transform  = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay3").style.opacity = '0';
+                        document.getElementById("overlay4").style.opacity = '1';
+                        break;
+                    case 'zoom5':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(0px, 230px)';
+                        document.getElementById("overlay4").style.transform  = 'scale(3) translate(0px, 230px)';
+                        document.getElementById("overlay5").style.transform  = 'scale(3) translate(0px, 230px)';
+                        document.getElementById("overlay4").style.opacity = '0';
+                        document.getElementById("overlay5").style.opacity = '1';
+                        break;
+                    case 'reset':
+                        document.getElementById("embedding").style.transform = '';
+                        document.getElementById("overlay1").style.transform  = '';
+                        document.getElementById("overlay2").style.transform  = '';
+                        document.getElementById("overlay3").style.transform  = '';
+                        document.getElementById("overlay4").style.transform  = '';
+                        document.getElementById("overlay5").style.transform  = '';
+                        document.getElementById("overlay5").style.opacity = '0';
+                        break;
+                    case 'show_clusters':
+                                    for (elem of document.getElementsByClassName('cluster')) {
+                                                    elem.className += ' bg-fade';
+                                                };
+                }
+            });
+		</script>
+	</body>
+</html>
