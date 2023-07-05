@@ -433,8 +433,19 @@ td {
     padding: 0;
     margin-top: -30px;
 }
-.manicule {
+.manicule, .manicule-white {
     position: relative;
+}
+.manicule-white::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: -120px;
+    background-image: url(icon/manicule-white.svg);
+    background-size: 100px;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 60px;
 }
 .manicule::before {
     content: "";
@@ -510,4 +521,64 @@ td {
 }
 .cluster img {
     height:100px;
+}
+
+.fragment.semi-fade-out-then-in {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+.fragment.semi-fade-out-then-in.current-fragment {
+    opacity: 0.5 !important;
+}
+.red {
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%) drop-shadow(0px 0px 2px red);
+}
+.arrow-bullet {
+    list-style: none;
+}
+.arrow-bullet::before {
+    content: "\21D2";
+    margin-left: -38px;
+}
+.checks {
+    list-style: none;
+}
+.checks::before {
+    content: "\2713";
+    margin-left: -38px;
+}
+ul {
+    list-style: none !important;
+}
+ul > li::before {
+    content: "⬦";
+    margin-left: -44px;
+    padding-right: 17px;
+}
+hr {
+    position:relative;
+    overflow:visible;
+    width:25%;
+}
+hr::before{
+    content:"⬦◈⬦";
+    position:absolute;
+    top:-29px;
+    z-index:10;
+    left:calc(50% - 20px);
+}
+.icon {
+    position:fixed;
+    left:-210px;
+    color: #dcd29f;
+    z-index: 10;
+    opacity: 0.25;
+    transform: rotate(90deg);
+}
+.fragment.semi-fade-in {
+    opacity: 0.5 !important;
+    visibility: visible !important;
+}
+.fragment.semi-fade-in.visible {
+    opacity: 1 !important;
 }

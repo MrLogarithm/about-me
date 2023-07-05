@@ -1,0 +1,593 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>CAWL 2023 | Learning the Character Inventories of Undeciphered Scripts using Unsupervised Deep Clustering</title>
+
+		<link rel="stylesheet" href="../reveal.js/css/reset.css">
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="../reveal.js/css/theme/midtech.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugins/highlight/monokai.css">
+	</head>
+	<body style='width:100vw;height:100vh;overflow:hidden;mix-blend-mode:darken;'>
+		<div class="reveal">
+			<div class="slides">
+				<section class="hcenter">
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                    <h3 style='position:relative;top:400px;'>
+                        Learning the Character Inventories of Undeciphered Scripts using Unsupervised Deep Clustering
+                    </h3>
+                </section>
+				<section data-transition='fade' style='color:white;'>
+                    <div style='position:fixed;top:-100vh;left:-100vw;width:300vw;height:300vh;background:black;max-height:none;max-width:none;'></div>
+                    <img src='assets/P008141_obv.png' style='min-height:500px;position:fixed; left:0px;top:0px;' />
+                            <pre style='position: absolute;width:53%;left:50%;top:300px;' class='fragment fade-in' data-fragment-index='1'>&amp;P008141 = MDP 06, 359
+#atf: lang qpc
+@tablet
+@obverse
+1. M157 ,
+# header
+2. M319 |M059+M038~a| M301~ea M002 , 1(N14) 1(N01)# 2(N39B)#
+2B. M262#
+#line inbetween 02. and 03.
+3. M301~eb M002 , 1(N14) 3(N01) 2(N39B)
+4. M262~1 M297 , 2(N01) 2(N39B)#?
+5. M297~b M002 , 1(N14)
+6. M218
+#tr.en: (subscript)
+$ (scribal design 1 = SDxxxx)
+                            </pre>
+                            <div class='fragment fade-in' data-fragment-index='2' style='width:500px;text-align:center;position: relative; top:560px; left:110px; font-family:Averia Serif Libre;'>
+                                    Underlying sign inventory <br/>remains uncertain!
+                            </ul>
+                </section>
+				<section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                    <h3>
+                        Same or different?
+                    </h3>
+                    <div class='hcenter'>
+                      <img height='300px' style='display:inline-block;transform:rotate(90deg);' src='assets/M157-M175-irl.png' />
+                      <img height='170px' style='display:inline-block;transform:rotate(90deg);position:relative;top:-60px;' src='assets/M157a-irl.png' />
+                    </div>
+                    <p style='font-family:Averia Serif Libre;position:absolute;top:380px;left:520px;'>
+                    M175
+                    <br/>
+                    <img class='fragment fade-in' data-fragment-index='1' style='transform:rotate(90deg);margin:0;right:20px;position:relative;' src='assets/M175.svg' />
+                    </p>
+                    <p style='font-family:Averia Serif Libre;position:absolute;top:380px;left:670px;'>
+                    M157
+                    <br/>
+                    <img class='fragment fade-in' data-fragment-index='1' style='transform:rotate(90deg);margin:0;right:20px;position:relative;' src='assets/M157.svg' />
+                    </p>
+                    <p style='font-family:Averia Serif Libre;position:absolute;top:380px;left:830px;'>
+                    M157~a
+                    <br/>
+                    <img class='fragment fade-in' data-fragment-index='1' style='transform:rotate(90deg);margin:0;right:0px;position:relative;' src='assets/M157-A.svg' />
+                    </p>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <ul>
+                        <li class='fragment fade-in'>M157(~a) most common at <b>start</b> of documents, M175 in <b>middle</b>
+                        </li>
+                        <li class='fragment fade-in'> ...but all are attested in both locations!
+                        </li>
+                    </ul>
+                    <br/>
+                    <br/>
+                    <p class='hcenter' style='font-family:Averia Serif Libre;'>
+                    <b class='fragment fade-in'>
+                        How to tell if these are really distinct signs?</b>
+                    <br/>
+                    <br/>
+                    <b class='fragment fade-in'>If they are distinct, how to tell if a given impression represents one or the other?
+                    </b>
+                    </p>
+				</section>
+				<section>
+				  <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                    <h3>Prior Work: Sign2Vec</h3>
+                    <span style='font-size:24pt;opacity:0.7; position:relative;top:-35px;'>Corazza et al. 2022a, 2022b</span>
+
+                    <p>
+                    Clusters contextual representations of sign images to obtain a signlist:
+                    </p>
+
+                    <div class='hcenter'>
+                      <img class='fragment semi-fade-out-then-in' data-fragment-index='1' width="60%" style='margin:0;position:relative;top:-140px;' src='assets/deepcluster.png' />
+                      <img class='fragment semi-fade-out-then-in' data-fragment-index='2' width="32%" src='assets/s2v-arch-c.png' />
+                      <span style='position:absolute;left:65px;bottom:370px;opacity:0.5;font-size:20pt;'>
+                          Image from Caron et al. 2018
+                      </span>
+                      <span style='position:absolute;left:1105px;bottom:210px;opacity:0.5;font-size:20pt;'>
+                          Image from Corazza et al. 2022
+                      </span>
+                    </div>
+
+                    <p>
+                    Combines <span data-fragment-index='2' class='fragment highlight-current-red'>soft neural clustering</span> (DeepCluster-v2; Caron et al. 2018) with a <span data-fragment-index='1' class='fragment highlight-current-red'>deep convolutional image encoder trained on a character-level Cloze task</span>
+                    </p>
+                    <p class='fragment fade-in' data-fragment-index='3'>
+                    Apply hard DBSCAN clustering after training
+                    </p>
+				  </section>
+				  <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                      <h3>Limitations</h3>
+                      <ul>
+                        <li> Sign2Vec uses short, 2-character context windows
+                          <ul>
+                            <li data-fragment-index='1' class='fragment fade-in'> Appropriate for Cypro-Minoan/Cypro-Greek sequences!
+                            </li>
+                            <li data-fragment-index='2' class='fragment fade-in'> Not appropriate for long-distance dependencies in PE (Born et al. 2022, 2023)
+                            </li>
+                          </ul>
+                        </li>
+                        <br/>
+                        <li data-fragment-index='3' class='fragment fade-in'> Sign2Vec uses the ResNet18 encoder (He et al. 2016):
+                        <ul>
+                          <li data-fragment-index='3' class='fragment fade-in'> Deep model created to encode <b>complex photorealistic scenes</b>
+                          </li>
+                          <li data-fragment-index='4' class='fragment fade-in'> Likely overkill for simple monochrome character images
+                          </li>
+                          <li data-fragment-index='5' class='fragment fade-in'> Want more efficient encoder:
+                              <ul>
+                                  <li data-fragment-index='5' class='fragment fade-in'>
+                                    PE corpus is ~11 times as large as corpora used by Corazza et al. $\Rightarrow$ slow to train
+                                  </li>
+                                  <li class='fragment fade-in'>
+                                    Wider context windows $\Rightarrow$ need to encode more images at once
+                                  </li>
+                                  <li class='fragment fade-in'> 
+                                    Bonus: lower monetary and environmental training costs, accessibility to groups without SOTA GPUs.
+                                  </li>
+                              </ul>
+                          </li>
+                        </ul>
+                        </li>
+                      </ul>
+                      <img style='position:absolute;left:25%;top:200px;' class='fragment fade-out' data-fragment-index='1' src='assets/s2v-arch-c.png'/>
+                      <div class='fragment fade-out' data-fragment-index='5'>
+                      <img style='position:absolute;left:20%;top:500px;' class='fragment fade-in' data-fragment-index='3' src='assets/resnet-img.png' height='300px'/>
+                      <img style='transform:rotate(90deg);position:absolute;right:20%;top:500px;' class='fragment fade-in' data-fragment-index='4' src='assets/M340.svg' height='300px'/>
+                      </div>
+				  </section>
+				</section>
+				<section>
+                    <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                        <h3>Variational Auto-Encoder (VAE)</h3>
+                        <span style='font-size:24pt;opacity:0.7; position:relative;top:-35px;'>Kingma &amp; Welling 2013</span>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div class='hcenter'>
+                          <img width='100%' src='assets/vae.svg' />
+                        </div>
+                        <ul>
+                            <li>
+                                <b>
+                                Shallow encoder/decoder:
+                                </b>
+                                3 stacked convolutional layers
+                            </li>
+                            <li class='fragment semi-fade-in'>
+                                Trained to reconstruct character images from dense bottleneck $z \sim \mathcal{N}(\mu, \sigma)$
+                            </li>
+                            <!--<li class='fragment semi-fade-in'>
+                                Train with the same soft-clustering pseudolabel objective used by Sign2Vec
+                            </li>-->
+                        </ul>
+                    </section>
+                    <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                        <h3>VAE+Neighbor</h3>
+                        <br/>
+                        <div class='hcenter'>
+                          <img height='800px' src='assets/vae+ctx.svg' />
+                        </div>
+                        <ul style='position:absolute;top:710px;left:850px;'>
+                            <li>
+                                Adds auxiliary task of predicting central sign given adjacent signs.
+                            </li>
+                            <br/>
+                            <li class='fragment custom semi-fade-in'>
+                                Same task as Sign2Vec, different output (image vs. pseudolabel)
+                            </li>
+                        </ul>
+                    </section>
+                    <section data-transition='fade-out'>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                        <h3>VAE+LSTM</h3>
+                        <p>
+                        Adds <b>autoregressive</b> language modeling as auxiliary task:
+                        </p>
+                        <div class='hcenter'>
+                          <img height='850px' style='top:10px;position:relative;left:40px;' src='assets/lstm.svg' />
+                        </div>
+                    </section>
+                    <section data-transition='fade-in'>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                        <h3>VAE+Transformer</h3>
+                        <p>
+                        Adds <b>masked</b> language modeling as auxiliary task:
+                        </p>
+                        <div class='hcenter'>
+                          <img height='800px' src='assets/transformer.svg' />
+                        </div>
+                        <p style='position:absolute;top:195px;left:965px;'>
+                        (6 layer/8 head/16 dim)
+                        </p>
+                    </section>
+				</section>
+				<section>
+				  <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                      <h3>Data</h3>
+                      <p>
+                      Goal: apply to PE image sequences to assess working hypotheses about the sign list:
+                      </p>
+                      <ul>
+                          <!--<li>
+                              Convert transliterated text into sequences of vector sign images:
+                          </li>-->
+                          <div style='display:inline-block;filter:drop-shadow(0px 0px 1px black);'>
+    <img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M305.svg'/><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M056-F.svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/1(N34).svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/1(N34).svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/8(N01).svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M288.svg' /><img style='padding:0;top:-10px;position:relative;transform:rotate(90deg);' width='58px' src='assets/M387.svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M305.svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M041-G.svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M056-F.svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/3(N01).svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/1(N08B).svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M288.svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M157.svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M175+M131-D.svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M305.svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M263.svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M288.svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/2(N01).svg' /><img style='margin:0;padding:0;transform:rotate(90deg);' width='75px' src='assets/M066-A.svg' />
+                          </div>
+                          <li class='fragment fade-in' data-fragment-index='1'>
+                              Replace transcribed sign names with expert-produced vector images
+                          </li>
+                          <li class='fragment fade-in' data-fragment-index='2'>
+                              Expect multiple distinct images per underlying character
+                          </li>
+                          <ul>
+                          <li class='fragment fade-in' data-fragment-index='3'>
+                              More variation than a digital font, less than images of the original tablets
+                          </li>
+                          </ul>
+                      </ul>
+                      <br/>
+                      <br/>
+                      <p class='fragment fade-in' data-fragment-index='4'>
+                      Evaluate performance on scripts with known character inventories:
+                      </p>
+                      <div class='hcenter fragment fade-in' data-fragment-index='4'>
+                        <div class='r-stack'>
+                            <!--data-fragment-index='5' class='fragment semi-fade-out' -->
+                          <img 
+                          width='1500px' src='assets/en_hand_sample.svg' />
+                          <!--<span data-fragment-index='5' class='fragment fade-in' style='background:rgba(255,255,255,0.75);filter:drop-shadow(0px 0px 10px white);border-radius:15px;'>Comparable level of graphical variation to PE sequences</span>-->
+                        </div>
+                        <br/>
+                        <div class='r-stack'>
+                            <!--data-fragment-index='6' class='fragment semi-fade-out' -->
+                          <img 
+                          width='1500px' src='assets/jp_sample.svg' />
+                          <!--<span data-fragment-index='6' class='fragment fade-in' style='background:rgba(255,255,255,0.75);filter:drop-shadow(0px 0px 10px white);border-radius:15px;'>Less variation than PE sequences, but possibly similar script type?</span>-->
+                        </div>
+                        <br/>
+                        <div class='r-stack' style='width:1500px;'>
+                            <!--data-fragment-index='7' class='fragment semi-fade-out' style='margin-left:60px;' -->
+                          <img 
+                          width='1390px' src='assets/cg.jpg' />
+                          <!--<span data-fragment-index='7' class='fragment fade-in' style='background:rgba(255,255,255,0.75);filter:drop-shadow(0px 0px 10px white);border-radius:15px;'>Much more variation than PE sequences</span>-->
+                        </div>
+                      </div>
+				  </section>
+				  <!--
+                      <section>
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                      <h3>Experiments</h3>
+                      <p>
+                      Learn representations from image seq. <span style='padding:0 20px;'>&rArr;</span> cluster to recover character inventory.
+                      <ul>
+                          <li class='fragment fade-in'>
+                              Cluster with DBSCAN (CG) or Agglomerative clustering (En, Jp)
+                              <ul>
+                                  <li>
+                                      DBSCAN allows fair comparison to Sign2Vec, otherwise less effective(?)
+                                  </li>
+                              </ul>
+                          </li>
+                          <li class='fragment fade-in'>
+                            Varied num. of clusters to imitate an unknown script (following Corazza et al.).
+                          </li>
+                      </ul>
+                      <br/>
+                      <br/>
+                      <div class='fragment fade-in'>
+                      <p>
+                      Evaluate V-Measure w.r.t. underlying character inventory.
+                      <ul>
+                          <li>
+                              Harmonic mean of homogeneity (~num. merges) and completeness (~num. splits)
+                          </li>
+                      </ul>
+                      </p>
+                      </div>
+                      <br/>
+                      <p class='fragment fade-in'>
+                      Untrained baseline: cluster images of the characters themselves.
+                      </p>
+				  </section>
+                  -->
+				</section>
+				<section>
+				  <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                      <h3>English</h3>
+                      <div class='hcenter'>
+                        <img src='assets/en-v.png'/>
+                      </div>
+                  </section>
+                  <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                      <h3>Japanese</h3>
+                      <div class='hcenter'>
+                        <img src='assets/jp-v.png'/>
+                      </div>
+                  </section>
+                  <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                      <h3>Cypro-Greek</h3>
+                      <br/>
+                      <br/>
+                      <img width="49%" src='assets/cg-v.png'/>
+                      <img width='49%' style='margin-bottom:200px;' src='assets/params.png'/>
+                  </section>
+                  <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                      <h3>Cypro-Greek</h3>
+                      <br/>
+                      <br/>
+                      <img width="49%" src='assets/cg-c.png'/>
+                      <img width="49%" src='assets/cg-h.png'/>
+				  </section>
+                  <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                      <h3>Proto-Elamite</h3>
+                      <div class='hcenter'>
+                      <img src='assets/merges2.png'/>
+                      </div>
+                      <ul>
+                          <li class='checks fragment fade-in-then-semi-out' data-fragment-index='1'>
+                              Complex graphemes with same outer part
+                          </li>
+                          <li class='checks fragment fade-in-then-semi-out' data-fragment-index='2'>
+                              Tilde-variants with suspected equivalence
+                          </li>
+                          <li class='checks fragment fade-in' data-fragment-index='3'>
+                              Visual and contextual parallels across multiple texts
+                              <ul>
+                                  <li class='fragment fade-in' data-fragment-index='4'>
+                                      Occur with grain capacity signs, yokes, and other field utensils
+                                  </li>
+                                  <li class='arrow-bullet fragment fade-in' data-fragment-index='5'>
+                                      Clear agricultural parallels, even if not the same underlying sign
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                      <div style='border-radius:50px;position:absolute;top:400px;left:295px;border:10px solid red;width:150px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='1'></div>
+                      <div style='border-radius:50px;position:absolute;top:310px;left:795px;border:10px solid red;width:180px;height:190px;' class='fragment fade-in-then-out' data-fragment-index='1'></div>
+                      <div style='border-radius:50px;position:absolute;top:225px;left:1070px;border:10px solid red;width:150px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='1'></div>
+
+                      <div style='border-radius:50px;position:absolute;top:225px;left:280px;border:10px solid red;width:180px;height:170px;' class='fragment fade-in-then-out' data-fragment-index='2'></div>
+                      <div style='border-radius:50px;position:absolute;top:225px;left:555px;border:10px solid red;width:150px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='2'></div>
+                      <div style='border-radius:50px;position:absolute;top:490px;left:295px;border:10px solid red;width:150px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='2'></div>
+
+                      <div style='border-radius:50px;position:absolute;top:225px;left:795px;border:10px solid red;width:180px;height:90px;' class='fragment fade-in' data-fragment-index='3'></div>
+
+				  </section>
+				</section>
+				<section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                    <h3>In Sum</h3>
+                    <h3 class='hcenter fragment fade-in'>
+                        Thank You!</h3>
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/js/reveal.js"></script>
+		<script src="../reveal.js/plugins/notes/notes.js"></script>
+		<script src="../reveal.js/plugins/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugins/highlight/highlight.js"></script>
+        <script src="../reveal.js/plugins/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+                width: 1920,
+                height: 1080,
+
+				hash: true,
+                center: false,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>

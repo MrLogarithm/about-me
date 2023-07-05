@@ -1,0 +1,674 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>CAWL 2023 | Disambiguating Numeral Sequences to Decipher Ancient Accounting Corpora</title>
+
+		<link rel="stylesheet" href="../reveal.js/css/reset.css">
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="../reveal.js/css/theme/midtech.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugins/highlight/monokai.css">
+	</head>
+	<body style='width:100vw;height:100vh;overflow:hidden;'>
+		<div class="reveal">
+			<div class="slides" style='mix-blend-mode:darken;'>
+				<section class="hcenter" data-transition='fade'>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                    <h3 style='position:relative;top:400px;'>
+                        Disambiguating Numeral Sequences to Decipher Ancient Accounting Corpora
+                    </h3>
+                </section>
+				<section data-transition='fade' style='color:white;'>
+                    <div style='position:fixed;top:-200%;left:-100%;width:300%;height:800%;background:black;max-height:none;max-width:none;'></div>
+                    <img src='assets/P008141_obv.png' style='min-height:500px;position:fixed; left:0px;top:0px;' />
+                            <pre style='position: absolute;width:53%;left:50%;top:300px;' class='fragment fade-in' data-fragment-index='2'><span class='fragment fade-out' data-fragment-index='4'>&amp;P008141 = MDP 06, 359
+#atf: lang qpc
+@tablet
+@obverse
+1. M157 ,
+# header
+2. M319 |M059+M038~a| M301~ea M002 , 1(N14) 1(N01)# 2(N39B)#
+2B. M262#
+#line inbetween 02. and 03.
+3. M301~eb M002 , 1(N14) 3(N01) 2(N39B)
+4. M262~1 M297 , 2(N01) 2(N39B)#?
+5. M297~b M002 , 1(N14)
+6. M218
+#tr.en: (subscript)
+$ (scribal design 1 = SDxxxx)
+</span>
+                            </pre>
+                            <pre style='position: absolute;width:53%;left:50%;top:300px;' class='fragment fade-in' data-fragment-index='4'>&amp;P008141 = MDP 06, 359
+#atf: lang qpc
+@tablet
+@obverse
+1. <u style='color:#e88888;'>M157</u> ,
+# header
+2. <u style='color:#e88888;'>M319 |M059+M038~a| M301~ea M002</u> , <b style='color:#83b579'><em>1(N14) 1(N01)# 2(N39B)#</em></b>
+2B. <u style='color:#e88888;'>M262#</u>
+#line inbetween 02. and 03.
+3. <u style='color:#e88888;'>M301~eb M002</u> , <b style='color:#83b579;'><em>1(N14) 3(N01) 2(N39B)</em></b>
+4. <u style='color:#e88888;'>M262~1 M297</u> , <b style='color:#83b579;'><em>2(N01) 2(N39B)#?</em></b>
+5. <u style='color:#e88888;'>M297~b M002</u> , <b style='color:#83b579;'><em>1(N14)</em></b>
+6. <u style='color:#e88888;'>M218</u>
+#tr.en: (subscript)
+$ (scribal design 1 = SDxxxx)
+                            </pre>
+                            <ul style='position: relative; top:560px; left:-40px;'>
+                                <li class='fragment fade-in' data-fragment-index='1'>
+                                    ~1600 tablets, most unearthed <br/>at the ancient city of Susa (Iran)
+                                </li>
+                                <li class='fragment fade-in' data-fragment-index='3'>
+                                    Partially deciphered
+                                </li>
+                                <li class='fragment fade-in' data-fragment-index='4'>
+                                    &quot;Spreadsheets&quot; with alternating spans of <br/><u style='color:#e88888;'>text</u> followed by a <b style='color:#83b579'><em>numeral</em></b>
+                                </li>
+                            </ul>
+                </section>
+                <section>
+                    <section data-transition='fade-out'>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                        <h3>Number Systems</h3>
+                    <div class='fragment semi-fade-out-then-in' style='display:inline-block;' data-fragment-index='1'>
+                    <div class='fragment semi-fade-out-then-in' style='display:inline-block;' data-fragment-index='2'>
+                    <b>Sexagesimal</b><br style='margin-bottom:20px;'/>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N45).svg'>
+        <span style='position:relative;top:-40px;'>
+            &larr;<span style='position:relative;left:-20px;top:-30px;'>6</span>
+        </span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N48).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N34).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N14).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N01).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>2</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N08A).svg'>
+                    </div>
+                    </div>
+        <br/>
+    
+                    <div class='fragment semi-fade-out-then-in' style='display:inline-block;' data-fragment-index='2'>
+        <b>Decimal</b><br style='margin-bottom:20px;'/>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N54G).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);position:relative;top:-25px;height:50px;margin:0;margin-right:10px;margin-left:-10px;transform:rotate(90deg);'src='assets/1(N51).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N23).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N14).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N01).svg'>
+                    </div>
+        <br/>
+    
+                    <div class='fragment semi-fade-out-then-in' style='display:inline-block;' data-fragment-index='1'>
+                    <div class='fragment semi-fade-out-then-in' style='display:inline-block;' data-fragment-index='2'>
+        <b>Bisexagesimal</b><br style='margin-bottom:20px;'/>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N54).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);position:relative;top:-25px;height:50px;margin:0;margin-right:10px;margin-left:-10px;transform:rotate(90deg);'src='assets/1(N51).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>2</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N34).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N14).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N01).svg'>
+                    </div>
+                    </div>
+        <br/>
+    
+                    <div class='fragment semi-fade-out-then-in' style='display:inline-block;' data-fragment-index='1'>
+        <b>Capacity</b><br style='margin-bottom:20px;'/>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N46).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N48).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N34).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>3</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N45).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N14).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N01).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>5</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N39B).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>2</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N24).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>3</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N30C).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>2</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N30D).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>2</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N39C).svg'>
+                    </div>
+
+                    <div class='fragment fade-in-then-out' data-fragment-index='1' style='position:absolute;width:270px;height:670px;right:240px;top:0px;transform:scale(0.8);border:4px solid #7b7b51;padding-left:100px;opacity:0.5;'>
+                    </div>
+                    <div class='fragment fade-in-then-out' data-fragment-index='1' style='position:absolute;width:250px;height:650px;right:250px;top:10px;transform:scale(0.8);border:4px solid #7b7b51;padding-left:100px;'>
+                        1 <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:10px;transform:rotate(90deg);'src='assets/1(N01).svg'><br/>
+                        2 <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:30px;transform:rotate(90deg);'src='assets/2(N01).svg'><br/>
+                        <span style='margin-left:45px;'>...</span><br/>
+                        9 <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:40px;transform:rotate(90deg);'src='assets/9(N01).svg'><br/>
+            10 <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-22px;transform:rotate(90deg);'src='assets/1(N14).svg'><br/>
+            11 
+            <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-22px;transform:rotate(90deg);'src='assets/1(N01).svg'>
+            <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-70px;transform:rotate(90deg);'src='assets/1(N14).svg'>
+            <br/>
+                    </div>
+                    <div class='fragment fade-in-then-out' data-fragment-index='2' style='position:absolute;width:270px;height:670px;right:240px;top:0px;transform:scale(0.8);border:4px solid #7b7b51;padding-left:100px;opacity:0.5;'>
+                    </div>
+                    <div class='fragment fade-in-then-out' data-fragment-index='2' style='position:absolute;width:250px;height:650px;right:250px;top:10px;transform:scale(0.8);border:4px solid #7b7b51;padding-left:100px;'>
+                        1 <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:10px;transform:rotate(90deg);'src='assets/1(N01).svg'><br/>
+                        2 <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:30px;transform:rotate(90deg);'src='assets/2(N01).svg'><br/>
+                        <span style='margin-left:45px;'>...</span><br/>
+                        5 <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:30px;transform:rotate(90deg);'src='assets/5(N01).svg'><br/>
+                        <span style='color:red;font-weight:bold;'>
+                            6
+                        </span>
+                        <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;transform:rotate(90deg);'src='assets/1(N14).svg'><br/>
+                        <span style='color:red;font-weight:bold;'>
+                            7
+                        </span>
+            <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;transform:rotate(90deg);'src='assets/1(N01).svg'>
+            <img style='position:relative;top:30px;filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-70px;transform:rotate(90deg);'src='assets/1(N14).svg'>
+            <br/>
+                    </div>
+                    <div class='hcenter vcenter fragment fade-in' data-fragment-index='4' style='position:absolute;width:520px;height:270px;right:170px;top:190px;transform:scale(0.8);display:inline-block;border:4px solid #7b7b51;opacity:0.5;'>
+                    </div>
+                    <div class='hcenter vcenter fragment fade-in' data-fragment-index='4' style='position:absolute;width:500px;height:250px;right:180px;top:200px;transform:scale(0.8);display:inline-block;border:4px solid #7b7b51;'>
+                        7? &larr;
+                        <div style='display:inline-block;position:relative;top:50px;'>
+            <img style='filter:drop-shadow(0px 0px 1px black);margin:0;transform:rotate(90deg);'src='assets/1(N01).svg'>
+            <img style='filter:drop-shadow(0px 0px 1px black);margin:0;margin-left:-100px;transform:rotate(90deg);'src='assets/1(N14).svg'>
+                        </div>
+                        &rarr; 11?
+                        </div>
+                    </section>
+                    <section data-transition="fade-in fade-out">
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                        <h3>Number Systems</h3>
+                    <b>Sexagesimal</b><br style='margin-bottom:20px;'/>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N45).svg'>
+        <span style='position:relative;top:-40px;'>
+            &larr;<span style='position:relative;left:-20px;top:-30px;'>6</span>
+        </span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N48).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N34).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N14).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N01).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>2</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N08A).svg'>
+        <br/>
+    
+        <b>Decimal</b><br style='margin-bottom:20px;'/>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N54G).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img class='red' style='position:relative;top:-25px;height:50px;margin:0;margin-right:10px;margin-left:-10px;transform:rotate(90deg);'src='assets/1(N51).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N23).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N14).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N01).svg'>
+        <br/>
+    
+        <b>Bisexagesimal</b><br style='margin-bottom:20px;'/>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N54).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img class='red' style='position:relative;top:-25px;height:50px;margin:0;margin-right:10px;margin-left:-10px;transform:rotate(90deg);'src='assets/1(N51).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>2</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N34).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N14).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N01).svg'>
+        <br/>
+    
+        <b>Capacity</b><br style='margin-bottom:20px;'/>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N46).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N48).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N34).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>3</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N45).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-35px;top:-30px;'>10</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N14).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>6</span></span>
+        <img class='red' style='width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N01).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>5</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N39B).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>2</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N24).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>3</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N30C).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>2</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N30D).svg'>
+    <span style='position:relative;top:-40px;'>&larr;<span style='position:relative;left:-20px;top:-30px;'>2</span></span>
+        <img style='filter:drop-shadow(0px 0px 1px black);width:100px;margin:0;margin-left:-40px;transform:rotate(90deg);'src='assets/1(N39C).svg'>
+
+        <div class='fragment fade-in' style='position:absolute;top:250px;right:0px;width:700px; text-align:center;font-family:var(--r-heading-font);'>
+            What contextual features disambiguate these systems?
+            <br/>
+            <br/>
+            What can we learn about the corpus by analyzing numeral values?
+        </div>
+                    </section>
+                </section>
+                    <section data-transition="fade-out">
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                        <h3>Data</h3>
+                        <ul>
+                            <li> Extract <b>intact</b> numerals from transliterated corpus<sup>1</sup> using regex
+                            </li>
+                            <li class='fragment fade-in'> Compute candidate readings using established sign values
+                                <div class='hcenter' style='width:120%;'>
+                                  <img src='assets/table.png' width="500px"/>
+                                </div>
+                            </li>
+                            <!--<li class='fragment fade-in'> Disambiguate using <b>tablet summaries</b> and <b>bootstrap classifier</b>
+                            </li>
+                            <li class='fragment fade-in'> Manual analysis in collaboration with domain experts
+                            </li>-->
+                        </ul>
+                        <p style='font-size:24pt;position:absolute;bottom:-100px;'>
+                        <sup>1</sup>ASCII transliterations courtesy of Cuneiform Digital Library Initiative (CDLI) and Dr. Jacob Dahl
+                        </p>
+                    </section>
+                <section data-transition='fade-in'>
+                    <section style='color:white;' data-transition='fade'>
+                        <h3 style='color:white;'>Tablet Summaries</h3>
+                        <p>
+                        Some documents include a summary line <br/>which sums up the preceding entries:
+                        </p>
+
+                        <div style='background:black; z-index:-2; position:fixed; left:-100%; top:-100%; height:300%; width:300%; max-height:none;max-width:none;'>
+                        </div>
+                        <img style='z-index:-1; position:fixed; left:-10%; top:0; width:120%; max-height:none;max-width:none;' src='assets/P008012.jpg' />
+
+                        <p style='position: absolute;left:270px;top:330px;filter:drop-shadow(0px 0px 3px black);font-size:36pt;'>65</p>
+                        <p style='position: absolute;left:130px;top:380px;filter:drop-shadow(0px 0px 3px black);font-size:36pt;'>= 22 + 9 + 18 + 16</p>
+                        <p style='position: absolute;left:1330px;top:430px;filter:drop-shadow(0px 0px 3px black);font-size:36pt;'>22</p>
+                        <p style='position: absolute;left:800px;top:430px;filter:drop-shadow(0px 0px 3px black);font-size:36pt;'>9</p>
+                        <p style='position: absolute;left:1210px;top:550px;filter:drop-shadow(0px 0px 3px black);font-size:36pt;'>18</p>
+                        <p style='position: absolute;left:880px;top:570px;filter:drop-shadow(0px 0px 3px black);font-size:36pt;'>16</p>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p class='fragment fade-in manicule-white' style='font-size:24pt;'>
+                        Can disambiguate by searching for combinations<br/>of readings which give a valid sum
+                        </p>
+
+                    </section>
+                    <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                        <h3>Tablet Summaries</h3>
+                        <p>
+                          24 tablets can be fully or partially disambiguated, e.g. P008014.
+                        </p>
+
+                        <div class='r-stack'>
+                        <div class='fragment fade-out' data-fragment-index='3'>
+                        <div class='hcenter' style='margin-top:-350px;'>
+                          <img width='500px' style='transform:rotate(90deg);' src='assets/P008014.jpg'/>
+                        </div>
+                        <ul style='position:relative; top:-380px;'>
+                            <!--<li> All entries must use <b>capacity</b> system to yield the correct sum
+                            </li>
+                            <li> Summary is labeled with M288 <img width='100px' style='display:inline;position:relative;top:50px;left:-20px;transform:rotate(90deg);margin-right:-40px; margin-top:-90px;' src='assets/M288.svg'/> 
+                            </li>-->
+                            <li> Summary implies that all entries record amounts of M288 <img width='100px' style='display:inline;position:relative;top:50px;left:-20px;transform:rotate(90deg);margin-right:-40px; margin-top:-90px;' src='assets/M288.svg'/> in the capacity system
+                            </li>
+                            <div style='position:absolute;right:800px;border:8px solid #c80f0f;width:60px;height:100px;top:-425px;border-radius:200px;filter:drop-shadow(0px 0px 2px red)'>
+                            </div>
+                            <div class='fragment fade-in' data-fragment-index='1' style='position:absolute;right:522px;border:8px solid #c80f0f;width:60px;height:100px;top:-450px;border-radius:200px;filter:drop-shadow(0px 0px 2px red)'>
+                            </div>
+                            <ul>
+                                <li class='fragment fade-in' data-fragment-index='1'>
+                                M288 only occurs in one entry on the obverse
+                                </li>
+                              <li class='fragment fade-in arrow-bullet' data-fragment-index='2'> Long-distance dependency between M288 and the numerals which it "scopes over"
+                              </li>
+                            </ul>
+                        </ul>
+                        </div>
+                        <div class='fragment fade-in' data-fragment-index='3'>
+                            <div class='hcenter'>
+                                <p>
+                                Enables construction of a test set for numeral disambiguation:
+                                </p>
+                      <img src='assets/test-dist.png' height='300px' style='margin-bottom:100px;margin-right:100px;'/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                            </div>
+                        </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                    <h3>Bootstrapping</h3>
+                    <span style='font-size:24pt;opacity:0.7; position:relative;top:-35px;'>Yarowsky et al. 1995</span>
+                    <p>
+                    <b>Uses unambiguous numerals as seed labels</b> to learn a classifier for ambiguous ones:
+                    <div class='hcenter' style='font-family:monospace;'>
+                        <br/>
+                        <em>&nbsp;feature&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;&nbsp;&nbsp;&nbsp;p(B)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p(C)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p(D)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p(S)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>
+                        <br/>
+                        (SAME_ENTRY, M367~B, [0.129464, 0.129464, 0.611607, 0.129464])
+                        <br/>
+                        <br/>
+                    </div>
+                    </p>
+                    <div class='fragment fade-in' style='margin-top:40px;'>
+                      <p>Features reflect expert intuitions about possible disambiguating signals:
+                      <ul>
+                        <li> Tablet ID, bags of signs from adjacent text, assumed headers/implicit objects, etc
+                        </li>
+                      </ul>
+                      </p>
+                    </div>
+                    <div class='fragment fade-in' style='margin-top:40px;'>
+                      <p>Compare two approaches:
+                      <ul>
+                        <li> Baseline: frequency-based cautious rule selection (Collins and Singer 1999)
+                        </li>
+                        <li class='fragment semi-fade-in'> Ours: confidence-based cautious rule selection
+                        </li>
+                      </ul>
+                      </p>
+                    </div>
+                    </section>
+                    <section class='hcenter'>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                        <p>
+                        Vanilla (left) vs. confidence-based rule selection (right):
+                        </p>
+                        <img src='assets/4way.png' height='400px'/>
+                        <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.6 F1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vs &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.88 F1
+                        </p>
+                        <!--<br/>
+                        <div class='fragment fade-in'>
+                            <p style='float:left; width:470px;margin-top:80px;'>
+                            Two-way evaluation<br/>(capacity vs. non-capacity):
+                            </p>
+                          <img src='assets/2way.png' height='300px' style='display:inline;'/>
+                        </div>-->
+                    </section>
+                    <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                        <h3>
+                            Novel Observations
+                        </h3>
+                        <br/>
+                        <ul>
+                            <li> M288 
+                            <img width='100px' style='display:inline;position:relative;top:50px;left:-20px;transform:rotate(90deg);margin-right:-40px; margin-top:-70px;' src='assets/M288.svg'/> 
+                                associated with larger values than M263
+                            <img width='100px' style='display:inline;position:relative;top:50px;left:-20px;transform:rotate(90deg);margin-right:-40px; margin-top:-70px;' src='assets/M263.svg'/> 
+                                <ul>
+                                  <li> Larger capacity? Dealt with in bulk?
+                                  </li> 
+                                </ul>
+                            </li>
+                            <br/>
+                            <li class='fragment fade-in'> Constant ratio: values beside M376 
+                            <img width='100px' style='display:inline;position:relative;top:50px;left:-20px;transform:rotate(90deg);margin-right:-40px; margin-top:-70px;' src='assets/M376.svg'/> 
+                                <b>exactly</b> 2x as large as those by M367~i
+                            <img width='100px' style='display:inline;position:relative;top:50px;left:-20px;transform:rotate(90deg);margin-right:-40px; margin-top:-70px;' src='assets/M367-I.svg'/> 
+                            </li>
+                        <br/>
+                            <li class='fragment fade-in'> M388
+                            <img width='100px' style='filter:drop-shadow(0px 0px 1px black);display:inline;position:relative;top:50px;left:-20px;transform:rotate(90deg);margin-right:-40px; margin-top:-70px;' src='assets/M388.svg'/> 
+                                associated with larger counts than M124
+                            <img width='100px' style='display:inline;position:relative;top:50px;left:-20px;transform:rotate(90deg);margin-right:-40px; margin-top:-70px;' src='assets/M124.svg'/> 
+                            <ul>
+                                <li>
+                                    Higher status workers? Larger work groups?
+                                </li>
+                            </ul>
+                            </li>
+                        <br/>
+                            <li class='fragment fade-in'> Most tablets don't mix systems
+                                <ul> 
+                                    <li>
+                                    Those which <b>do</b> only mix capacity measures with one other system.
+                                    </li>
+                                    <li>
+                                    Amounts of grain(?) alongside donors/recipients?
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                        <!-- SIDEBAR -->
+                        <img src='assets/M024.svg' class='icon' style='top:-160px;'/>
+                        <img src='assets/M038-A.svg' class='icon' style='top: -40px;'/>
+                        <img src='assets/M057.svg' class='icon' style='top: 80px;'/>
+                        <img src='assets/M097-H.svg' class='icon' style='top:200px;'/>
+                        <img src='assets/M263.svg' class='icon' style='top:320px;'/>
+                        <img src='assets/M305.svg' class='icon' style='top:440px;'/>
+                        <img src='assets/M218.svg' class='icon' style='top:560px;'/>
+                        <img src='assets/M066.svg' class='icon' style='top:680px;'/>
+                        <img src='assets/M288.svg' class='icon' style='top:800px;'/>
+                        <img src='assets/M188-E.svg' class='icon' style='top:920px;'/>
+                        <!-- END SIDEBAR -->
+                    <h3>In Sum</h3>
+                    <ul>
+                        <li class='fragment fade-in'>
+                            Proto-Elamite numerals are challenging to read: most written notations are ambiguous
+                        </li>
+                        <br/>
+                        <li class='fragment fade-in'>
+                            Can be disambiguated using additive relations in tablet summaries or by bootstrapping from unambiguous notations
+                        </li>
+                        <br/>
+                        <li class='fragment fade-in'>
+                            Novel heuristic for bootstrapping gives 0.88 F1 on manually-vetted test set: accurate enough for initial analyses
+                        </li>
+                        <br/>
+                        <li class='fragment fade-in'>
+                            Observe new correlations between number system, magnitude, and text content which add nuance to candidate readings for undeciphered signs
+                        </li>
+                    </ul>
+                    <br/>
+                    <br/>
+                    <h3 class='hcenter fragment fade-in'>
+                        Thank You!</h3>
+                </section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/js/reveal.js"></script>
+		<script src="../reveal.js/plugins/notes/notes.js"></script>
+		<script src="../reveal.js/plugins/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugins/highlight/highlight.js"></script>
+        <script src="../reveal.js/plugins/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+                width: 1920,
+                height: 1080,
+
+				hash: true,
+                center: false,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+            Reveal.on( 'fragmentshown', event => {
+                switch(event.fragment.id) {
+                    case 'zoom1':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(510px, 80px)';
+                        document.getElementById("overlay1").style.transform  = 'scale(3) translate(510px, 80px)';
+                        document.getElementById("overlay2").style.transform  = 'scale(3) translate(510px, 80px)';
+                        document.getElementById("overlay1").style.opacity = '1';
+                        break;
+                    case 'zoom2':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay1").style.transform  = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay2").style.transform  = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay3").style.transform  = 'scale(3) translate( 60px, 200px)';
+                        document.getElementById("overlay1").style.opacity = '0';
+                        document.getElementById("overlay2").style.opacity = '1';
+                        break;
+                    case 'zoom3':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay2").style.transform  = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay3").style.transform  = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay4").style.transform  = 'scale(3) translate(140px, 50px)';
+                        document.getElementById("overlay2").style.opacity = '0';
+                        document.getElementById("overlay3").style.opacity = '1';
+                        break;
+                    case 'zoom4':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay3").style.transform  = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay4").style.transform  = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay5").style.transform  = 'scale(3) translate(-40px, 50px)';
+                        document.getElementById("overlay3").style.opacity = '0';
+                        document.getElementById("overlay4").style.opacity = '1';
+                        break;
+                    case 'zoom5':
+                        document.getElementById("embedding").style.transform = 'scale(3) translate(0px, 230px)';
+                        document.getElementById("overlay4").style.transform  = 'scale(3) translate(0px, 230px)';
+                        document.getElementById("overlay5").style.transform  = 'scale(3) translate(0px, 230px)';
+                        document.getElementById("overlay4").style.opacity = '0';
+                        document.getElementById("overlay5").style.opacity = '1';
+                        break;
+                    case 'reset':
+                        document.getElementById("embedding").style.transform = '';
+                        document.getElementById("overlay1").style.transform  = '';
+                        document.getElementById("overlay2").style.transform  = '';
+                        document.getElementById("overlay3").style.transform  = '';
+                        document.getElementById("overlay4").style.transform  = '';
+                        document.getElementById("overlay5").style.transform  = '';
+                        document.getElementById("overlay5").style.opacity = '0';
+                        break;
+                    case 'show_clusters':
+                                    for (elem of document.getElementsByClassName('cluster')) {
+                                                    elem.className += ' bg-fade';
+                                                };
+                }
+            });
+		</script>
+	</body>
+</html>
