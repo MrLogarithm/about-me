@@ -32,6 +32,7 @@
                     <h3 style='position:relative;top:400px;'>
                         Learning the Character Inventories of Undeciphered Scripts using Unsupervised Deep Clustering
                     </h3>
+		    <span style="font-weight:bold;position:relative;top:400px;">Logan Born &nbsp;&nbsp;&nbsp;&nbsp; M. Willis Monroe&nbsp;&nbsp;&nbsp;&nbsp; Kathryn Kelley &nbsp;&nbsp;&nbsp;&nbsp; Anoop Sarkar</span>
                 </section>
 				<section data-transition='fade' style='color:white;'>
                     <div style='position:fixed;top:-100vh;left:-100vw;width:300vw;height:300vh;background:black;max-height:none;max-width:none;'></div>
@@ -72,34 +73,30 @@ $ (scribal design 1 = SDxxxx)
                     <h3>
                         Same or different?
                     </h3>
+					<br/>
                     <div class='hcenter'>
-                      <img height='300px' style='display:inline-block;transform:rotate(90deg);' src='assets/M157-M175-irl.png' />
-                      <img height='170px' style='display:inline-block;transform:rotate(90deg);position:relative;top:-60px;' src='assets/M157a-irl.png' />
+                      <img height='170px' style='display:inline-block;transform:rotate(90deg);' src='assets/M175-irl.jpg' />
+                      <img height='170px' style='display:inline-block;transform:rotate(90deg);' src='assets/M157-irl.png' />
+                      <img height='170px' style='display:inline-block;transform:rotate(90deg);' src='assets/M157a-irl.png' />
                     </div>
-                    <p style='font-family:Averia Serif Libre;position:absolute;top:380px;left:520px;'>
+                    <p style='font-family:Averia Serif Libre;position:absolute;top:400px;left:400px;'>
                     M175
                     <br/>
                     <img class='fragment fade-in' data-fragment-index='1' style='transform:rotate(90deg);margin:0;right:20px;position:relative;' src='assets/M175.svg' />
                     </p>
-                    <p style='font-family:Averia Serif Libre;position:absolute;top:380px;left:670px;'>
+                    <p style='font-family:Averia Serif Libre;position:absolute;top:400px;left:720px;'>
                     M157
                     <br/>
                     <img class='fragment fade-in' data-fragment-index='1' style='transform:rotate(90deg);margin:0;right:20px;position:relative;' src='assets/M157.svg' />
                     </p>
-                    <p style='font-family:Averia Serif Libre;position:absolute;top:380px;left:830px;'>
+                    <p style='font-family:Averia Serif Libre;position:absolute;top:400px;left:1020px;'>
                     M157~a
                     <br/>
                     <img class='fragment fade-in' data-fragment-index='1' style='transform:rotate(90deg);margin:0;right:0px;position:relative;' src='assets/M157-A.svg' />
                     </p>
                     <br/>
                     <br/>
-                    <br/>
-                    <ul>
-                        <li class='fragment fade-in'>M157(~a) most common at <b>start</b> of documents, M175 in <b>middle</b>
-                        </li>
-                        <li class='fragment fade-in'> ...but all are attested in both locations!
-                        </li>
-                    </ul>
+		    <br/>
                     <br/>
                     <br/>
                     <p class='hcenter' style='font-family:Averia Serif Libre;'>
@@ -233,7 +230,7 @@ $ (scribal design 1 = SDxxxx)
                                 3 stacked convolutional layers
                             </li>
                             <li class='fragment semi-fade-in'>
-                                Trained to reconstruct character images from dense bottleneck $z \sim \mathcal{N}(\mu, \sigma)$
+                                Trained to reconstruct character images from bottleneck $z \sim \mathcal{N}(\mu, \sigma)$
                             </li>
                             <!--<li class='fragment semi-fade-in'>
                                 Train with the same soft-clustering pseudolabel objective used by Sign2Vec
@@ -442,7 +439,14 @@ $ (scribal design 1 = SDxxxx)
                         <!-- END SIDEBAR -->
                       <h3>English</h3>
                       <div class='hcenter'>
-                        <img src='assets/en-v.png'/>
+			<span>
+			Agglomerative clustering with varying num. clusters:
+			</span>
+                        <img height="600px" style='position:relative;left:-80px;' src='assets/en-v.png'/>
+		      <br/>
+			<span>
+			Dotted line: true num. of underlying characters
+			</span>
                       </div>
                   </section>
                   <section>
@@ -460,7 +464,14 @@ $ (scribal design 1 = SDxxxx)
                         <!-- END SIDEBAR -->
                       <h3>Japanese</h3>
                       <div class='hcenter'>
-                        <img src='assets/jp-v.png'/>
+			<span>
+			Agglomerative clustering with varying num. clusters:
+			</span>
+                        <img height="600px" style='position:relative;left:-80px;' src='assets/jp-v.png'/>
+		      <br/>
+			<span>
+			Dotted line: true num. of underlying characters
+			</span>
                       </div>
                   </section>
                   <section>
@@ -518,12 +529,18 @@ $ (scribal design 1 = SDxxxx)
                       <div class='hcenter'>
                       <img src='assets/merges2.png'/>
                       </div>
-                      <ul>
-                          <li class='checks fragment fade-in-then-semi-out' data-fragment-index='1'>
+                      <ul class='r-stack'>
+                          <li class='checks fragment fade-in-then-out' data-fragment-index='1'>
                               Complex graphemes with same outer part
+				  <br/>
+				  <br/>
+				  <br/>
                           </li>
-                          <li class='checks fragment fade-in-then-semi-out' data-fragment-index='2'>
+                          <li class='checks fragment fade-in-then-out' data-fragment-index='2'>
                               Tilde-variants with suspected equivalence
+				  <br/>
+				  <br/>
+				  <br/>
                           </li>
                           <li class='checks fragment fade-in' data-fragment-index='3'>
                               Visual and contextual parallels across multiple texts
@@ -537,13 +554,15 @@ $ (scribal design 1 = SDxxxx)
                               </ul>
                           </li>
                       </ul>
-                      <div style='border-radius:50px;position:absolute;top:400px;left:295px;border:10px solid red;width:150px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='1'></div>
-                      <div style='border-radius:50px;position:absolute;top:310px;left:795px;border:10px solid red;width:180px;height:190px;' class='fragment fade-in-then-out' data-fragment-index='1'></div>
+                      <div style='border-radius:50px;position:absolute;top:490px;left:282px;border:10px solid red;width:180px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='1'></div>
+                      <div style='border-radius:50px;position:absolute;top:350px;left:795px;border:10px solid red;width:180px;height:100px;' class='fragment fade-in-then-out' data-fragment-index='1'></div>
+                      <div style='border-radius:50px;position:absolute;top:490px;left:795px;border:10px solid red;width:180px;height:100px;' class='fragment fade-in-then-out' data-fragment-index='1'></div>
                       <div style='border-radius:50px;position:absolute;top:225px;left:1070px;border:10px solid red;width:150px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='1'></div>
 
-                      <div style='border-radius:50px;position:absolute;top:225px;left:280px;border:10px solid red;width:180px;height:170px;' class='fragment fade-in-then-out' data-fragment-index='2'></div>
+                      <div style='border-radius:50px;position:absolute;top:225px;left:300px;border:10px solid red;width:135px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='2'></div>
+                      <div style='border-radius:50px;position:absolute;top:360px;left:270px;border:10px solid red;width:205px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='2'></div>
                       <div style='border-radius:50px;position:absolute;top:225px;left:555px;border:10px solid red;width:150px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='2'></div>
-                      <div style='border-radius:50px;position:absolute;top:490px;left:295px;border:10px solid red;width:150px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='2'></div>
+                      <div style='border-radius:50px;position:absolute;top:620px;left:295px;border:10px solid red;width:150px;height:90px;' class='fragment fade-in-then-out' data-fragment-index='2'></div>
 
                       <div style='border-radius:50px;position:absolute;top:225px;left:795px;border:10px solid red;width:180px;height:90px;' class='fragment fade-in' data-fragment-index='3'></div>
 
