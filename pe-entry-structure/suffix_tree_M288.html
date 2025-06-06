@@ -1,0 +1,255 @@
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.4/graphlib-dot.min.js"></script>
+<script src="https://dagrejs.github.io/project/dagre-d3/v0.5.0/dagre-d3.min.js"></script>
+
+<html>
+<head>
+<style>
+svg {
+  overflow: hidden;
+}
+.node rect {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: #fff;
+}
+.synonym rect {
+    fill: lightblue;
+}
+.hilite {
+    fill: red;
+}
+.hilite rect {
+  stroke: red;
+  stroke-width: 2.5px;
+  fill: pink;
+}
+.edgeLabel rect {
+  fill: #fff;
+}
+.edgePath {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: none;
+}
+</style>
+</head>
+<body>
+  <script type='text/javascript'>
+  var g;
+  window.onload = function() {
+  // Parse the DOT syntax into a graphlib object.
+  g = graphlibDot.read('digraph {' +
+'	graph [splines=ortho]' +
+'	"2_M153" [label=M153]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"2_M153" -> "[EOE]"' +
+'	"3_M288+1(N39B)" [label="M288+1(N39B)"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"3_M288+1(N39B)" -> "[EOE]"' +
+'	"4_M346" [label=M346]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"4_M346" -> "[EOE]"' +
+'	"6_M288~A" [label="M288~A"]' +
+'	"36_M388" [label=M388]' +
+'	"6_M288~A" -> "36_M388"' +
+'	"6_M288~A" [label="M288~A"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"6_M288~A" -> "[EOE]"' +
+'	"9_M057~A4" [label="M057~A4"]' +
+'	"14_M240~E" [label="M240~E"]' +
+'	"9_M057~A4" -> "14_M240~E"' +
+'	"10_M242~D" [label="M242~D"]' +
+'	"34_M097~H" [label="M097~H"]' +
+'	"10_M242~D" -> "34_M097~H"' +
+'	"12_M377~E" [label="M377~E"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"12_M377~E" -> "[EOE]"' +
+'	"13_M124" [label=M124]' +
+'	"9_M057~A4" [label="M057~A4"]' +
+'	"13_M124" -> "9_M057~A4"' +
+'	"14_M240~E" [label="M240~E"]' +
+'	"37_M295~C" [label="M295~C"]' +
+'	"14_M240~E" -> "37_M295~C"' +
+'	"15_M059" [label=M059]' +
+'	"16_M284~K" [label="M284~K"]' +
+'	"15_M059" -> "16_M284~K"' +
+'	"16_M284~K" [label="M284~K"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"16_M284~K" -> "[EOE]"' +
+'	"19_M288~G" [label="M288~G"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"19_M288~G" -> "[EOE]"' +
+'	"21_M288" [label=M288]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"21_M288" -> "[EOE]"' +
+'	"21_M288" [label=M288]' +
+'	"2_M153" [label=M153]' +
+'	"21_M288" -> "2_M153"' +
+'	"21_M288" [label=M288]' +
+'	"12_M377~E" [label="M377~E"]' +
+'	"21_M288" -> "12_M377~E"' +
+'	"21_M288" [label=M288]' +
+'	"4_M346" [label=M346]' +
+'	"21_M288" -> "4_M346"' +
+'	"21_M288" [label=M288]' +
+'	"15_M059" [label=M059]' +
+'	"21_M288" -> "15_M059"' +
+'	"21_M288" [label=M288]' +
+'	"10_M242~D" [label="M242~D"]' +
+'	"21_M288" -> "10_M242~D"' +
+'	"22_M387~L" [label="M387~L"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"22_M387~L" -> "[EOE]"' +
+'	"27_M288~I" [label="M288~I"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"27_M288~I" -> "[EOE]"' +
+'	"30_M288~D" [label="M288~D"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"30_M288~D" -> "[EOE]"' +
+'	"30_M288~D" [label="M288~D"]' +
+'	"22_M387~L" [label="M387~L"]' +
+'	"30_M288~D" -> "22_M387~L"' +
+'	"32_M288~B" [label="M288~B"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"32_M288~B" -> "[EOE]"' +
+'	"33_M281~E" [label="M281~E"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"33_M281~E" -> "[EOE]"' +
+'	"34_M097~H" [label="M097~H"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"34_M097~H" -> "[EOE]"' +
+'	"35_M288~F" [label="M288~F"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"35_M288~F" -> "[EOE]"' +
+'	"36_M388" [label=M388]' +
+'	"13_M124" [label=M124]' +
+'	"36_M388" -> "13_M124"' +
+'	"37_M295~C" [label="M295~C"]' +
+'	"33_M281~E" [label="M281~E"]' +
+'	"37_M295~C" -> "33_M281~E"' +
+'	"[BOE]" -> "35_M288~F"' +
+'	"[BOE]" -> "3_M288+1(N39B)"' +
+'	"[BOE]" -> "6_M288~A"' +
+'	"[BOE]" -> "21_M288"' +
+'	"[BOE]" -> "19_M288~G"' +
+'	"[BOE]" -> "32_M288~B"' +
+'	"[BOE]" -> "30_M288~D"' +
+'	"[BOE]" -> "27_M288~I"' +
+'}' +
+'');
+
+  // Render the graphlib object using d3.
+  var render = new dagreD3.render();
+  gg = render(d3.select("svg g"), g);
+
+  // Optional - resize the SVG element based on the contents.
+  var svg = document.querySelector('#graphContainer');
+  var bbox = svg.getBBox();
+  svg.style.width = bbox.width + 40.0 + "px";
+  svg.style.height = bbox.height + 40.0 + "px";
+
+  function hilite(n) {
+      var node = d3.select(n);
+      node.attr("class", "node hilite");  
+      console.log(node.data()[0]);
+  }
+  function base_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[0];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+  function inner_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[1];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+
+  function olap(a, b) {
+      return (base_sign(a) == base_sign(b)) || (inner_sign(a) == base_sign(b)) || (base_sign(a) == inner_sign(b)) || (inner_sign(a) == inner_sign(b))
+  }
+  function hilite_synonyms(n) {
+          var node = d3.select(n);
+      node_id = node.data()[0];
+      d3.selectAll(".node").filter(
+          u=> olap(u, node_id)
+      ).attr("class", "node synonym");
+  }
+  function hilite_parents(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getParents(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.w == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_parents(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  function hilite_children(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getChildren(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.v == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_children(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  d3.selectAll('.node').on('mouseover', function(d, i){
+      hilite_parents(this);
+      hilite_children(this);
+      hilite_synonyms(this);
+    }); 
+
+  d3.selectAll('.node').on('mouseout', function(d, i){
+    d3.selectAll('.node').attr("class", "node");
+    d3.selectAll('.edgePath').style("stroke", "black");
+    d3.selectAll('.edgePath').style("stroke-width", "1.5px");
+    }); 
+
+}
+
+  function getParents(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].w == node).map(u=>u[1].v);
+  }
+
+  function getChildren(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].v == node).map(u=>u[1].w);
+  }
+  
+  </script>
+  <svg id="graphContainer">
+    <g/>
+  </svg>
+</body>
+
+</html>

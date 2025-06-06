@@ -1,0 +1,283 @@
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.4/graphlib-dot.min.js"></script>
+<script src="https://dagrejs.github.io/project/dagre-d3/v0.5.0/dagre-d3.min.js"></script>
+
+<html>
+<head>
+<style>
+svg {
+  overflow: hidden;
+}
+.node rect {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: #fff;
+}
+.synonym rect {
+    fill: lightblue;
+}
+.hilite {
+    fill: red;
+}
+.hilite rect {
+  stroke: red;
+  stroke-width: 2.5px;
+  fill: pink;
+}
+.edgeLabel rect {
+  fill: #fff;
+}
+.edgePath {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: none;
+}
+</style>
+</head>
+<body>
+  <script type='text/javascript'>
+  var g;
+  window.onload = function() {
+  // Parse the DOT syntax into a graphlib object.
+  g = graphlibDot.read('digraph {' +
+'	graph [splines=ortho]' +
+'	"4_M362+M059~D" [label="M362+M059~D"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"4_M362+M059~D" -> "[EOE]"' +
+'	"4_M362+M059~D" [label="M362+M059~D"]' +
+'	"57_M312~A" [label="M312~A"]' +
+'	"4_M362+M059~D" -> "57_M312~A"' +
+'	"4_M362+M059~D" [label="M362+M059~D"]' +
+'	"10;52_M001+M379~C" [label="M001+M379~C"]' +
+'	"4_M362+M059~D" -> "10;52_M001+M379~C"' +
+'	"5_M362+M312" [label="M362+M312"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"5_M362+M312" -> "[EOE]"' +
+'	"6_M362#+[X" [label="M362#+[X"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"6_M362#+[X" -> "[EOE]"' +
+'	"8_M362+M005" [label="M362+M005"]' +
+'	"16_M207~B" [label="M207~B"]' +
+'	"8_M362+M005" -> "16_M207~B"' +
+'	"11_M005" [label=M005]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"11_M005" -> "[EOE]"' +
+'	"12_M362~GC" [label="M362~GC"]' +
+'	"23_M059~D" [label="M059~D"]' +
+'	"12_M362~GC" -> "23_M059~D"' +
+'	"16_M207~B" [label="M207~B"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"16_M207~B" -> "[EOE]"' +
+'	"17_M362+M099~B" [label="M362+M099~B"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"17_M362+M099~B" -> "[EOE]"' +
+'	"19_M362+M026~H" [label="M362+M026~H"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"19_M362+M026~H" -> "[EOE]"' +
+'	"23_M059~D" [label="M059~D"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"23_M059~D" -> "[EOE]"' +
+'	"25_M362+M123~B" [label="M362+M123~B"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"25_M362+M123~B" -> "[EOE]"' +
+'	"27_M362~A" [label="M362~A"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"27_M362~A" -> "[EOE]"' +
+'	"28_M362+X" [label="M362+X"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"28_M362+X" -> "[EOE]"' +
+'	"28_M362+X" [label="M362+X"]' +
+'	"53_M384" [label=M384]' +
+'	"28_M362+X" -> "53_M384"' +
+'	"31_M362+M059" [label="M362+M059"]' +
+'	"10;52_M001+M379~C" [label="M001+M379~C"]' +
+'	"31_M362+M059" -> "10;52_M001+M379~C"' +
+'	"35_M362" [label=M362]' +
+'	"48_M123~B" [label="M123~B"]' +
+'	"35_M362" -> "48_M123~B"' +
+'	"35_M362" [label=M362]' +
+'	"40_M383~C" [label="M383~C"]' +
+'	"35_M362" -> "40_M383~C"' +
+'	"35_M362" [label=M362]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"35_M362" -> "[EOE]"' +
+'	"37_M362+M244" [label="M362+M244"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"37_M362+M244" -> "[EOE]"' +
+'	"39_M362+M600" [label="M362+M600"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"39_M362+M600" -> "[EOE]"' +
+'	"40_M383~C" [label="M383~C"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"40_M383~C" -> "[EOE]"' +
+'	"44_M362+M384~A" [label="M362+M384~A"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"44_M362+M384~A" -> "[EOE]"' +
+'	"46_M362+M247~G" [label="M362+M247~G"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"46_M362+M247~G" -> "[EOE]"' +
+'	"47_M362~B" [label="M362~B"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"47_M362~B" -> "[EOE]"' +
+'	"48_M123~B" [label="M123~B"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"48_M123~B" -> "[EOE]"' +
+'	"50_M362+M158" [label="M362+M158"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"50_M362+M158" -> "[EOE]"' +
+'	"53_M384" [label=M384]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"53_M384" -> "[EOE]"' +
+'	"54_M362+M383~C" [label="M362+M383~C"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"54_M362+M383~C" -> "[EOE]"' +
+'	"55_M362+M207~N" [label="M362+M207~N"]' +
+'	"11_M005" [label=M005]' +
+'	"55_M362+M207~N" -> "11_M005"' +
+'	"56_M362+M317" [label="M362+M317"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"56_M362+M317" -> "[EOE]"' +
+'	"57_M312~A" [label="M312~A"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"57_M312~A" -> "[EOE]"' +
+'	"10;52_M001+M379~C" [label="M001+M379~C"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"10;52_M001+M379~C" -> "[EOE]"' +
+'	"[BOE]" -> "6_M362#+[X"' +
+'	"[BOE]" -> "44_M362+M384~A"' +
+'	"[BOE]" -> "12_M362~GC"' +
+'	"[BOE]" -> "19_M362+M026~H"' +
+'	"[BOE]" -> "28_M362+X"' +
+'	"[BOE]" -> "39_M362+M600"' +
+'	"[BOE]" -> "56_M362+M317"' +
+'	"[BOE]" -> "27_M362~A"' +
+'	"[BOE]" -> "5_M362+M312"' +
+'	"[BOE]" -> "47_M362~B"' +
+'	"[BOE]" -> "54_M362+M383~C"' +
+'	"[BOE]" -> "4_M362+M059~D"' +
+'	"[BOE]" -> "37_M362+M244"' +
+'	"[BOE]" -> "35_M362"' +
+'	"[BOE]" -> "55_M362+M207~N"' +
+'	"[BOE]" -> "25_M362+M123~B"' +
+'	"[BOE]" -> "17_M362+M099~B"' +
+'	"[BOE]" -> "8_M362+M005"' +
+'	"[BOE]" -> "46_M362+M247~G"' +
+'	"[BOE]" -> "31_M362+M059"' +
+'	"[BOE]" -> "50_M362+M158"' +
+'}' +
+'');
+
+  // Render the graphlib object using d3.
+  var render = new dagreD3.render();
+  gg = render(d3.select("svg g"), g);
+
+  // Optional - resize the SVG element based on the contents.
+  var svg = document.querySelector('#graphContainer');
+  var bbox = svg.getBBox();
+  svg.style.width = bbox.width + 40.0 + "px";
+  svg.style.height = bbox.height + 40.0 + "px";
+
+  function hilite(n) {
+      var node = d3.select(n);
+      node.attr("class", "node hilite");  
+      console.log(node.data()[0]);
+  }
+  function base_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[0];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+  function inner_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[1];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+
+  function olap(a, b) {
+      return (base_sign(a) == base_sign(b)) || (inner_sign(a) == base_sign(b)) || (base_sign(a) == inner_sign(b)) || (inner_sign(a) == inner_sign(b))
+  }
+  function hilite_synonyms(n) {
+          var node = d3.select(n);
+      node_id = node.data()[0];
+      d3.selectAll(".node").filter(
+          u=> olap(u, node_id)
+      ).attr("class", "node synonym");
+  }
+  function hilite_parents(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getParents(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.w == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_parents(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  function hilite_children(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getChildren(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.v == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_children(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  d3.selectAll('.node').on('mouseover', function(d, i){
+      hilite_parents(this);
+      hilite_children(this);
+      hilite_synonyms(this);
+    }); 
+
+  d3.selectAll('.node').on('mouseout', function(d, i){
+    d3.selectAll('.node').attr("class", "node");
+    d3.selectAll('.edgePath').style("stroke", "black");
+    d3.selectAll('.edgePath').style("stroke-width", "1.5px");
+    }); 
+
+}
+
+  function getParents(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].w == node).map(u=>u[1].v);
+  }
+
+  function getChildren(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].v == node).map(u=>u[1].w);
+  }
+  
+  </script>
+  <svg id="graphContainer">
+    <g/>
+  </svg>
+</body>
+
+</html>

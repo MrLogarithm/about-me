@@ -1,0 +1,366 @@
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.4/graphlib-dot.min.js"></script>
+<script src="https://dagrejs.github.io/project/dagre-d3/v0.5.0/dagre-d3.min.js"></script>
+
+<html>
+<head>
+<style>
+svg {
+  overflow: hidden;
+}
+.node rect {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: #fff;
+}
+.synonym rect {
+    fill: lightblue;
+}
+.hilite {
+    fill: red;
+}
+.hilite rect {
+  stroke: red;
+  stroke-width: 2.5px;
+  fill: pink;
+}
+.edgeLabel rect {
+  fill: #fff;
+}
+.edgePath {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: none;
+}
+</style>
+</head>
+<body>
+  <script type='text/javascript'>
+  var g;
+  window.onload = function() {
+  // Parse the DOT syntax into a graphlib object.
+  g = graphlibDot.read('digraph {' +
+'	graph [splines=ortho]' +
+'	"0_M295~O" [label="M295~O"]' +
+'	"3_M222" [label=M222]' +
+'	"0_M295~O" -> "3_M222"' +
+'	"1_M038~B" [label="M038~B"]' +
+'	"10_M374~C" [label="M374~C"]' +
+'	"1_M038~B" -> "10_M374~C"' +
+'	"3_M222" [label=M222]' +
+'	"36_M218" [label=M218]' +
+'	"3_M222" -> "36_M218"' +
+'	"4_M218" [label=M218]' +
+'	"33_M263" [label=M263]' +
+'	"4_M218" -> "33_M263"' +
+'	"5_M302~E" [label="M302~E"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"5_M302~E" -> "[EOE]"' +
+'	"6_M240" [label=M240]' +
+'	"38_M097~H" [label="M097~H"]' +
+'	"6_M240" -> "38_M097~H"' +
+'	"9_M391" [label=M391]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"9_M391" -> "[EOE]"' +
+'	"10_M374~C" [label="M374~C"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"10_M374~C" -> "[EOE]"' +
+'	"13_M263~1" [label="M263~1"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"13_M263~1" -> "[EOE]"' +
+'	"15_M036+1(N14)" [label="M036+1(N14)"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"15_M036+1(N14)" -> "[EOE]"' +
+'	"17_M292~F" [label="M292~F"]' +
+'	"28_M388" [label=M388]' +
+'	"17_M292~F" -> "28_M388"' +
+'	"19_M387" [label=M387]' +
+'	"34_M017" [label=M017]' +
+'	"19_M387" -> "34_M017"' +
+'	"21_M263~1" [label="M263~1"]' +
+'	"69_M347" [label=M347]' +
+'	"21_M263~1" -> "69_M347"' +
+'	"23_M260~1" [label="M260~1"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"23_M260~1" -> "[EOE]"' +
+'	"24_M219" [label=M219]' +
+'	"8;20_M101" [label=M101]' +
+'	"24_M219" -> "8;20_M101"' +
+'	"25_M305+X" [label="M305+X"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"25_M305+X" -> "[EOE]"' +
+'	"26_M036+1(N30D)" [label="M036+1(N30D)"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"26_M036+1(N30D)" -> "[EOE]"' +
+'	"28_M388" [label=M388]' +
+'	"71_M263~1" [label="M263~1"]' +
+'	"28_M388" -> "71_M263~1"' +
+'	"29_M219" [label=M219]' +
+'	"63_M101" [label=M101]' +
+'	"29_M219" -> "63_M101"' +
+'	"31_M153+M342" [label="M153+M342"]' +
+'	"14;76;11;48;47_M288" [label=M288]' +
+'	"31_M153+M342" -> "14;76;11;48;47_M288"' +
+'	"32_M380" [label=M380]' +
+'	"45_M371" [label=M371]' +
+'	"32_M380" -> "45_M371"' +
+'	"33_M263" [label=M263]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"33_M263" -> "[EOE]"' +
+'	"34_M017" [label=M017]' +
+'	"13_M263~1" [label="M263~1"]' +
+'	"34_M017" -> "13_M263~1"' +
+'	"35_M222" [label=M222]' +
+'	"57_M371" [label=M371]' +
+'	"35_M222" -> "57_M371"' +
+'	"36_M218" [label=M218]' +
+'	"50_M269~B" [label="M269~B"]' +
+'	"36_M218" -> "50_M269~B"' +
+'	"38_M097~H" [label="M097~H"]' +
+'	"39_M004" [label=M004]' +
+'	"38_M097~H" -> "39_M004"' +
+'	"39_M004" [label=M004]' +
+'	"4_M218" [label=M218]' +
+'	"39_M004" -> "4_M218"' +
+'	"40_M376" [label=M376]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"40_M376" -> "[EOE]"' +
+'	"41_M348" [label=M348]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"41_M348" -> "[EOE]"' +
+'	"42_M347" [label=M347]' +
+'	"24_M219" [label=M219]' +
+'	"42_M347" -> "24_M219"' +
+'	"45_M371" [label=M371]' +
+'	"5_M302~E" [label="M302~E"]' +
+'	"45_M371" -> "5_M302~E"' +
+'	"49_M072" [label=M072]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"49_M072" -> "[EOE]"' +
+'	"50_M269~B" [label="M269~B"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"50_M269~B" -> "[EOE]"' +
+'	"54_M104" [label=M104]' +
+'	"0_M295~O" [label="M295~O"]' +
+'	"54_M104" -> "0_M295~O"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"75_M297" [label=M297]' +
+'	"55_M005~A" -> "75_M297"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"23_M260~1" [label="M260~1"]' +
+'	"55_M005~A" -> "23_M260~1"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"9_M391" [label=M391]' +
+'	"55_M005~A" -> "9_M391"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"15_M036+1(N14)" [label="M036+1(N14)"]' +
+'	"55_M005~A" -> "15_M036+1(N14)"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"21_M263~1" [label="M263~1"]' +
+'	"55_M005~A" -> "21_M263~1"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"56_M305" [label=M305]' +
+'	"55_M005~A" -> "56_M305"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"26_M036+1(N30D)" [label="M036+1(N30D)"]' +
+'	"55_M005~A" -> "26_M036+1(N30D)"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"68_M203~C" [label="M203~C"]' +
+'	"55_M005~A" -> "68_M203~C"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"25_M305+X" [label="M305+X"]' +
+'	"55_M005~A" -> "25_M305+X"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"17_M292~F" [label="M292~F"]' +
+'	"55_M005~A" -> "17_M292~F"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"40_M376" [label=M376]' +
+'	"55_M005~A" -> "40_M376"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"41_M348" [label=M348]' +
+'	"55_M005~A" -> "41_M348"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"55_M005~A" -> "[EOE]"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"54_M104" [label=M104]' +
+'	"55_M005~A" -> "54_M104"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"31_M153+M342" [label="M153+M342"]' +
+'	"55_M005~A" -> "31_M153+M342"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"73_M388" [label=M388]' +
+'	"55_M005~A" -> "73_M388"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"1_M038~B" [label="M038~B"]' +
+'	"55_M005~A" -> "1_M038~B"' +
+'	"55_M005~A" [label="M005~A"]' +
+'	"14;76;11;48;47_M288" [label=M288]' +
+'	"55_M005~A" -> "14;76;11;48;47_M288"' +
+'	"56_M305" [label=M305]' +
+'	"74_M388" [label=M388]' +
+'	"56_M305" -> "74_M388"' +
+'	"57_M371" [label=M371]' +
+'	"19_M387" [label=M387]' +
+'	"57_M371" -> "19_M387"' +
+'	"61_M110" [label=M110]' +
+'	"32_M380" [label=M380]' +
+'	"61_M110" -> "32_M380"' +
+'	"63_M101" [label=M101]' +
+'	"8;20_M101" [label=M101]' +
+'	"63_M101" -> "8;20_M101"' +
+'	"64_M048~D" [label="M048~D"]' +
+'	"61_M110" [label=M110]' +
+'	"64_M048~D" -> "61_M110"' +
+'	"65_M005" [label=M005]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"65_M005" -> "[EOE]"' +
+'	"68_M203~C" [label="M203~C"]' +
+'	"14;76;11;48;47_M288" [label=M288]' +
+'	"68_M203~C" -> "14;76;11;48;47_M288"' +
+'	"69_M347" [label=M347]' +
+'	"29_M219" [label=M219]' +
+'	"69_M347" -> "29_M219"' +
+'	"71_M263~1" [label="M263~1"]' +
+'	"42_M347" [label=M347]' +
+'	"71_M263~1" -> "42_M347"' +
+'	"73_M388" [label=M388]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"73_M388" -> "[EOE]"' +
+'	"73_M388" [label=M388]' +
+'	"64_M048~D" [label="M048~D"]' +
+'	"73_M388" -> "64_M048~D"' +
+'	"74_M388" [label=M388]' +
+'	"35_M222" [label=M222]' +
+'	"74_M388" -> "35_M222"' +
+'	"74_M388" [label=M388]' +
+'	"6_M240" [label=M240]' +
+'	"74_M388" -> "6_M240"' +
+'	"75_M297" [label=M297]' +
+'	"49_M072" [label=M072]' +
+'	"75_M297" -> "49_M072"' +
+'	"14;76;11;48;47_M288" [label=M288]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"14;76;11;48;47_M288" -> "[EOE]"' +
+'	"8;20_M101" [label=M101]' +
+'	"14;76;11;48;47_M288" [label=M288]' +
+'	"8;20_M101" -> "14;76;11;48;47_M288"' +
+'	"[BOE]" -> "65_M005"' +
+'	"[BOE]" -> "55_M005~A"' +
+'}' +
+'');
+
+  // Render the graphlib object using d3.
+  var render = new dagreD3.render();
+  gg = render(d3.select("svg g"), g);
+
+  // Optional - resize the SVG element based on the contents.
+  var svg = document.querySelector('#graphContainer');
+  var bbox = svg.getBBox();
+  svg.style.width = bbox.width + 40.0 + "px";
+  svg.style.height = bbox.height + 40.0 + "px";
+
+  function hilite(n) {
+      var node = d3.select(n);
+      node.attr("class", "node hilite");  
+      console.log(node.data()[0]);
+  }
+  function base_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[0];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+  function inner_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[1];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+
+  function olap(a, b) {
+      return (base_sign(a) == base_sign(b)) || (inner_sign(a) == base_sign(b)) || (base_sign(a) == inner_sign(b)) || (inner_sign(a) == inner_sign(b))
+  }
+  function hilite_synonyms(n) {
+          var node = d3.select(n);
+      node_id = node.data()[0];
+      d3.selectAll(".node").filter(
+          u=> olap(u, node_id)
+      ).attr("class", "node synonym");
+  }
+  function hilite_parents(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getParents(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.w == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_parents(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  function hilite_children(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getChildren(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.v == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_children(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  d3.selectAll('.node').on('mouseover', function(d, i){
+      hilite_parents(this);
+      hilite_children(this);
+      hilite_synonyms(this);
+    }); 
+
+  d3.selectAll('.node').on('mouseout', function(d, i){
+    d3.selectAll('.node').attr("class", "node");
+    d3.selectAll('.edgePath').style("stroke", "black");
+    d3.selectAll('.edgePath').style("stroke-width", "1.5px");
+    }); 
+
+}
+
+  function getParents(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].w == node).map(u=>u[1].v);
+  }
+
+  function getChildren(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].v == node).map(u=>u[1].w);
+  }
+  
+  </script>
+  <svg id="graphContainer">
+    <g/>
+  </svg>
+</body>
+
+</html>

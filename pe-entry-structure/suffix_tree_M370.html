@@ -1,0 +1,352 @@
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.4/graphlib-dot.min.js"></script>
+<script src="https://dagrejs.github.io/project/dagre-d3/v0.5.0/dagre-d3.min.js"></script>
+
+<html>
+<head>
+<style>
+svg {
+  overflow: hidden;
+}
+.node rect {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: #fff;
+}
+.synonym rect {
+    fill: lightblue;
+}
+.hilite {
+    fill: red;
+}
+.hilite rect {
+  stroke: red;
+  stroke-width: 2.5px;
+  fill: pink;
+}
+.edgeLabel rect {
+  fill: #fff;
+}
+.edgePath {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: none;
+}
+</style>
+</head>
+<body>
+  <script type='text/javascript'>
+  var g;
+  window.onload = function() {
+  // Parse the DOT syntax into a graphlib object.
+  g = graphlibDot.read('digraph {' +
+'	graph [splines=ortho]' +
+'	"0_M370~B+X" [label="M370~B+X"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"0_M370~B+X" -> "[EOE]"' +
+'	"3_M036" [label=M036]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"3_M036" -> "[EOE]"' +
+'	"5_M370~B+M046" [label="M370~B+M046"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"5_M370~B+M046" -> "[EOE]"' +
+'	"6_M376" [label=M376]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"6_M376" -> "[EOE]"' +
+'	"7_M388" [label=M388]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"7_M388" -> "[EOE]"' +
+'	"9_M370~C" [label="M370~C"]' +
+'	"48_M297" [label=M297]' +
+'	"9_M370~C" -> "48_M297"' +
+'	"9_M370~C" [label="M370~C"]' +
+'	"3_M036" [label=M036]' +
+'	"9_M370~C" -> "3_M036"' +
+'	"13_M053~A" [label="M053~A"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"13_M053~A" -> "[EOE]"' +
+'	"14_M297" [label=M297]' +
+'	"42;19;43_M124" [label=M124]' +
+'	"14_M297" -> "42;19;43_M124"' +
+'	"14_M297" [label=M297]' +
+'	"20;46;12_M072" [label=M072]' +
+'	"14_M297" -> "20;46;12_M072"' +
+'	"15_M310" [label=M310]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"15_M310" -> "[EOE]"' +
+'	"21_M370~DA" [label="M370~DA"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"21_M370~DA" -> "[EOE]"' +
+'	"27_M001" [label=M001]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"27_M001" -> "[EOE]"' +
+'	"28_M054" [label=M054]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"28_M054" -> "[EOE]"' +
+'	"31_M370" [label=M370]' +
+'	"62_M124" [label=M124]' +
+'	"31_M370" -> "62_M124"' +
+'	"31_M370" [label=M370]' +
+'	"73_M376" [label=M376]' +
+'	"31_M370" -> "73_M376"' +
+'	"31_M370" [label=M370]' +
+'	"76_M369" [label=M369]' +
+'	"31_M370" -> "76_M369"' +
+'	"31_M370" [label=M370]' +
+'	"58_M373" [label=M373]' +
+'	"31_M370" -> "58_M373"' +
+'	"31_M370" [label=M370]' +
+'	"66_M149~A" [label="M149~A"]' +
+'	"31_M370" -> "66_M149~A"' +
+'	"31_M370" [label=M370]' +
+'	"63_M305+X" [label="M305+X"]' +
+'	"31_M370" -> "63_M305+X"' +
+'	"31_M370" [label=M370]' +
+'	"40_M242~X" [label="M242~X"]' +
+'	"31_M370" -> "40_M242~X"' +
+'	"31_M370" [label=M370]' +
+'	"28_M054" [label=M054]' +
+'	"31_M370" -> "28_M054"' +
+'	"31_M370" [label=M370]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"31_M370" -> "[EOE]"' +
+'	"31_M370" [label=M370]' +
+'	"36_M288" [label=M288]' +
+'	"31_M370" -> "36_M288"' +
+'	"31_M370" [label=M370]' +
+'	"47_M373~A" [label="M373~A"]' +
+'	"31_M370" -> "47_M373~A"' +
+'	"31_M370" [label=M370]' +
+'	"65_M046" [label=M046]' +
+'	"31_M370" -> "65_M046"' +
+'	"31_M370" [label=M370]' +
+'	"59_M203~A" [label="M203~A"]' +
+'	"31_M370" -> "59_M203~A"' +
+'	"31_M370" [label=M370]' +
+'	"39_M005~A" [label="M005~A"]' +
+'	"31_M370" -> "39_M005~A"' +
+'	"31_M370" [label=M370]' +
+'	"56_M346" [label=M346]' +
+'	"31_M370" -> "56_M346"' +
+'	"31_M370" [label=M370]' +
+'	"13_M053~A" [label="M053~A"]' +
+'	"31_M370" -> "13_M053~A"' +
+'	"31_M370" [label=M370]' +
+'	"20;46;12_M072" [label=M072]' +
+'	"31_M370" -> "20;46;12_M072"' +
+'	"33_M370~B+M388" [label="M370~B+M388"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"33_M370~B+M388" -> "[EOE]"' +
+'	"34_M370~B" [label="M370~B"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"34_M370~B" -> "[EOE]"' +
+'	"36_M288" [label=M288]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"36_M288" -> "[EOE]"' +
+'	"39_M005~A" [label="M005~A"]' +
+'	"15_M310" [label=M310]' +
+'	"39_M005~A" -> "15_M310"' +
+'	"40_M242~X" [label="M242~X"]' +
+'	"71_M367" [label=M367]' +
+'	"40_M242~X" -> "71_M367"' +
+'	"47_M373~A" [label="M373~A"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"47_M373~A" -> "[EOE]"' +
+'	"48_M297" [label=M297]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"48_M297" -> "[EOE]"' +
+'	"49_M370~B+M072" [label="M370~B+M072"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"49_M370~B+M072" -> "[EOE]"' +
+'	"52_M370+M046+M370" [label="M370+M046+M370"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"52_M370+M046+M370" -> "[EOE]"' +
+'	"54_M370+M072+M370" [label="M370+M072+M370"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"54_M370+M072+M370" -> "[EOE]"' +
+'	"56_M346" [label=M346]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"56_M346" -> "[EOE]"' +
+'	"58_M373" [label=M373]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"58_M373" -> "[EOE]"' +
+'	"59_M203~A" [label="M203~A"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"59_M203~A" -> "[EOE]"' +
+'	"59_M203~A" [label="M203~A"]' +
+'	"42;19;43_M124" [label=M124]' +
+'	"59_M203~A" -> "42;19;43_M124"' +
+'	"60_M370+X+M370" [label="M370+X+M370"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"60_M370+X+M370" -> "[EOE]"' +
+'	"62_M124" [label=M124]' +
+'	"6_M376" [label=M376]' +
+'	"62_M124" -> "6_M376"' +
+'	"62_M124" [label=M124]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"62_M124" -> "[EOE]"' +
+'	"63_M305+X" [label="M305+X"]' +
+'	"14_M297" [label=M297]' +
+'	"63_M305+X" -> "14_M297"' +
+'	"65_M046" [label=M046]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"65_M046" -> "[EOE]"' +
+'	"66_M149~A" [label="M149~A"]' +
+'	"7_M388" [label=M388]' +
+'	"66_M149~A" -> "7_M388"' +
+'	"68_M370+M388+M370" [label="M370+M388+M370"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"68_M370+M388+M370" -> "[EOE]"' +
+'	"71_M367" [label=M367]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"71_M367" -> "[EOE]"' +
+'	"73_M376" [label=M376]' +
+'	"27_M001" [label=M001]' +
+'	"73_M376" -> "27_M001"' +
+'	"73_M376" [label=M376]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"73_M376" -> "[EOE]"' +
+'	"73_M376" [label=M376]' +
+'	"42;19;43_M124" [label=M124]' +
+'	"73_M376" -> "42;19;43_M124"' +
+'	"73_M376" [label=M376]' +
+'	"20;46;12_M072" [label=M072]' +
+'	"73_M376" -> "20;46;12_M072"' +
+'	"76_M369" [label=M369]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"76_M369" -> "[EOE]"' +
+'	"42;19;43_M124" [label=M124]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"42;19;43_M124" -> "[EOE]"' +
+'	"20;46;12_M072" [label=M072]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"20;46;12_M072" -> "[EOE]"' +
+'	"[BOE]" -> "33_M370~B+M388"' +
+'	"[BOE]" -> "9_M370~C"' +
+'	"[BOE]" -> "21_M370~DA"' +
+'	"[BOE]" -> "68_M370+M388+M370"' +
+'	"[BOE]" -> "60_M370+X+M370"' +
+'	"[BOE]" -> "5_M370~B+M046"' +
+'	"[BOE]" -> "54_M370+M072+M370"' +
+'	"[BOE]" -> "34_M370~B"' +
+'	"[BOE]" -> "31_M370"' +
+'	"[BOE]" -> "0_M370~B+X"' +
+'	"[BOE]" -> "49_M370~B+M072"' +
+'	"[BOE]" -> "52_M370+M046+M370"' +
+'}' +
+'');
+
+  // Render the graphlib object using d3.
+  var render = new dagreD3.render();
+  gg = render(d3.select("svg g"), g);
+
+  // Optional - resize the SVG element based on the contents.
+  var svg = document.querySelector('#graphContainer');
+  var bbox = svg.getBBox();
+  svg.style.width = bbox.width + 40.0 + "px";
+  svg.style.height = bbox.height + 40.0 + "px";
+
+  function hilite(n) {
+      var node = d3.select(n);
+      node.attr("class", "node hilite");  
+      console.log(node.data()[0]);
+  }
+  function base_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[0];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+  function inner_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[1];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+
+  function olap(a, b) {
+      return (base_sign(a) == base_sign(b)) || (inner_sign(a) == base_sign(b)) || (base_sign(a) == inner_sign(b)) || (inner_sign(a) == inner_sign(b))
+  }
+  function hilite_synonyms(n) {
+          var node = d3.select(n);
+      node_id = node.data()[0];
+      d3.selectAll(".node").filter(
+          u=> olap(u, node_id)
+      ).attr("class", "node synonym");
+  }
+  function hilite_parents(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getParents(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.w == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_parents(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  function hilite_children(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getChildren(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.v == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_children(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  d3.selectAll('.node').on('mouseover', function(d, i){
+      hilite_parents(this);
+      hilite_children(this);
+      hilite_synonyms(this);
+    }); 
+
+  d3.selectAll('.node').on('mouseout', function(d, i){
+    d3.selectAll('.node').attr("class", "node");
+    d3.selectAll('.edgePath').style("stroke", "black");
+    d3.selectAll('.edgePath').style("stroke-width", "1.5px");
+    }); 
+
+}
+
+  function getParents(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].w == node).map(u=>u[1].v);
+  }
+
+  function getChildren(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].v == node).map(u=>u[1].w);
+  }
+  
+  </script>
+  <svg id="graphContainer">
+    <g/>
+  </svg>
+</body>
+
+</html>

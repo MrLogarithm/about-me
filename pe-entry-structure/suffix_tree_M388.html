@@ -1,0 +1,578 @@
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.4/graphlib-dot.min.js"></script>
+<script src="https://dagrejs.github.io/project/dagre-d3/v0.5.0/dagre-d3.min.js"></script>
+
+<html>
+<head>
+<style>
+svg {
+  overflow: hidden;
+}
+.node rect {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: #fff;
+}
+.synonym rect {
+    fill: lightblue;
+}
+.hilite {
+    fill: red;
+}
+.hilite rect {
+  stroke: red;
+  stroke-width: 2.5px;
+  fill: pink;
+}
+.edgeLabel rect {
+  fill: #fff;
+}
+.edgePath {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: none;
+}
+</style>
+</head>
+<body>
+  <script type='text/javascript'>
+  var g;
+  window.onload = function() {
+  // Parse the DOT syntax into a graphlib object.
+  g = graphlibDot.read('digraph {' +
+'	graph [splines=ortho]' +
+'	"0_M097~F" [label="M097~F"]' +
+'	"115;1_M218" [label=M218]' +
+'	"0_M097~F" -> "115;1_M218"' +
+'	"2_M387" [label=M387]' +
+'	"104_M391" [label=M391]' +
+'	"2_M387" -> "104_M391"' +
+'	"6_M219" [label=M219]' +
+'	"48_M218" [label=M218]' +
+'	"6_M219" -> "48_M218"' +
+'	"7_M066~A" [label="M066~A"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"7_M066~A" -> "[EOE]"' +
+'	"10_M073~B" [label="M073~B"]' +
+'	"103_M371" [label=M371]' +
+'	"10_M073~B" -> "103_M371"' +
+'	"12_M387" [label=M387]' +
+'	"36_M016" [label=M016]' +
+'	"12_M387" -> "36_M016"' +
+'	"14_M048~E" [label="M048~E"]' +
+'	"72_M218" [label=M218]' +
+'	"14_M048~E" -> "72_M218"' +
+'	"20_M080~A" [label="M080~A"]' +
+'	"152_M066~A" [label="M066~A"]' +
+'	"20_M080~A" -> "152_M066~A"' +
+'	"22_M139~A1" [label="M139~A1"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"22_M139~A1" -> "[EOE]"' +
+'	"25_M304" [label=M304]' +
+'	"66_M096~2" [label="M096~2"]' +
+'	"25_M304" -> "66_M096~2"' +
+'	"26_M124" [label=M124]' +
+'	"97_M097~F" [label="M097~F"]' +
+'	"26_M124" -> "97_M097~F"' +
+'	"30_M370" [label=M370]' +
+'	"115;1_M218" [label=M218]' +
+'	"30_M370" -> "115;1_M218"' +
+'	"32_M024~1" [label="M024~1"]' +
+'	"142;3_M318~A2" [label="M318~A2"]' +
+'	"32_M024~1" -> "142;3_M318~A2"' +
+'	"36_M016" [label=M016]' +
+'	"137_M260" [label=M260]' +
+'	"36_M016" -> "137_M260"' +
+'	"37_M371" [label=M371]' +
+'	"147_M106+M288" [label="M106+M288"]' +
+'	"37_M371" -> "147_M106+M288"' +
+'	"40_M024~1" [label="M024~1"]' +
+'	"54;47;105;5_M371" [label=M371]' +
+'	"40_M024~1" -> "54;47;105;5_M371"' +
+'	"41_M066~A" [label="M066~A"]' +
+'	"6_M219" [label=M219]' +
+'	"41_M066~A" -> "6_M219"' +
+'	"41_M066~A" [label="M066~A"]' +
+'	"164_M352~O" [label="M352~O"]' +
+'	"41_M066~A" -> "164_M352~O"' +
+'	"43_M219" [label=M219]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"43_M219" -> "[EOE]"' +
+'	"44_M347" [label=M347]' +
+'	"93_M110~B" [label="M110~B"]' +
+'	"44_M347" -> "93_M110~B"' +
+'	"45_M285~M" [label="M285~M"]' +
+'	"161;51;70;155;146;154;33;116;39_M346" [label=M346]' +
+'	"45_M285~M" -> "161;51;70;155;146;154;33;116;39_M346"' +
+'	"48_M218" [label=M218]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"48_M218" -> "[EOE]"' +
+'	"49_M003~B" [label="M003~B"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"49_M003~B" -> "[EOE]"' +
+'	"52_M128" [label=M128]' +
+'	"21;50_M096" [label=M096]' +
+'	"52_M128" -> "21;50_M096"' +
+'	"53_M096" [label=M096]' +
+'	"153;15;80;109;124;156_M288" [label=M288]' +
+'	"53_M096" -> "153;15;80;109;124;156_M288"' +
+'	"56_M387" [label=M387]' +
+'	"101_M009" [label=M009]' +
+'	"56_M387" -> "101_M009"' +
+'	"56_M387" [label=M387]' +
+'	"40_M024~1" [label="M024~1"]' +
+'	"56_M387" -> "40_M024~1"' +
+'	"60_M491" [label=M491]' +
+'	"99_M218" [label=M218]' +
+'	"60_M491" -> "99_M218"' +
+'	"62_M051~B" [label="M051~B"]' +
+'	"12_M387" [label=M387]' +
+'	"62_M051~B" -> "12_M387"' +
+'	"64_M262" [label=M262]' +
+'	"0_M097~F" [label="M097~F"]' +
+'	"64_M262" -> "0_M097~F"' +
+'	"66_M096~2" [label="M096~2"]' +
+'	"161;51;70;155;146;154;33;116;39_M346" [label=M346]' +
+'	"66_M096~2" -> "161;51;70;155;146;154;33;116;39_M346"' +
+'	"68_M263~1" [label="M263~1"]' +
+'	"112_M297" [label=M297]' +
+'	"68_M263~1" -> "112_M297"' +
+'	"72_M218" [label=M218]' +
+'	"144_M099" [label=M099]' +
+'	"72_M218" -> "144_M099"' +
+'	"73_M315" [label=M315]' +
+'	"68_M263~1" [label="M263~1"]' +
+'	"73_M315" -> "68_M263~1"' +
+'	"75_M072" [label=M072]' +
+'	"132;67_M371" [label=M371]' +
+'	"75_M072" -> "132;67_M371"' +
+'	"76_M263" [label=M263]' +
+'	"10_M073~B" [label="M073~B"]' +
+'	"76_M263" -> "10_M073~B"' +
+'	"77_M218+M320" [label="M218+M320"]' +
+'	"160_M347" [label=M347]' +
+'	"77_M218+M320" -> "160_M347"' +
+'	"78_M371" [label=M371]' +
+'	"87_M243~G" [label="M243~G"]' +
+'	"78_M371" -> "87_M243~G"' +
+'	"79_M295~Y" [label="M295~Y"]' +
+'	"43_M219" [label=M219]' +
+'	"79_M295~Y" -> "43_M219"' +
+'	"84_M371" [label=M371]' +
+'	"22_M139~A1" [label="M139~A1"]' +
+'	"84_M371" -> "22_M139~A1"' +
+'	"86_M369" [label=M369]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"86_M369" -> "[EOE]"' +
+'	"87_M243~G" [label="M243~G"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"87_M243~G" -> "[EOE]"' +
+'	"88_M026~A" [label="M026~A"]' +
+'	"161;51;70;155;146;154;33;116;39_M346" [label=M346]' +
+'	"88_M026~A" -> "161;51;70;155;146;154;33;116;39_M346"' +
+'	"89_M371" [label=M371]' +
+'	"69;83_M054" [label=M054]' +
+'	"89_M371" -> "69;83_M054"' +
+'	"92_M305+X" [label="M305+X"]' +
+'	"162;95_M320" [label=M320]' +
+'	"92_M305+X" -> "162;95_M320"' +
+'	"93_M110~B" [label="M110~B"]' +
+'	"54;47;105;5_M371" [label=M371]' +
+'	"93_M110~B" -> "54;47;105;5_M371"' +
+'	"96_M329" [label=M329]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"96_M329" -> "[EOE]"' +
+'	"97_M097~F" [label="M097~F"]' +
+'	"161;51;70;155;146;154;33;116;39_M346" [label=M346]' +
+'	"97_M097~F" -> "161;51;70;155;146;154;33;116;39_M346"' +
+'	"98_M354" [label=M354]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"98_M354" -> "[EOE]"' +
+'	"99_M218" [label=M218]' +
+'	"161;51;70;155;146;154;33;116;39_M346" [label=M346]' +
+'	"99_M218" -> "161;51;70;155;146;154;33;116;39_M346"' +
+'	"100_M003" [label=M003]' +
+'	"88_M026~A" [label="M026~A"]' +
+'	"100_M003" -> "88_M026~A"' +
+'	"101_M009" [label=M009]' +
+'	"89_M371" [label=M371]' +
+'	"101_M009" -> "89_M371"' +
+'	"103_M371" [label=M371]' +
+'	"153;15;80;109;124;156_M288" [label=M288]' +
+'	"103_M371" -> "153;15;80;109;124;156_M288"' +
+'	"104_M391" [label=M391]' +
+'	"161;51;70;155;146;154;33;116;39_M346" [label=M346]' +
+'	"104_M391" -> "161;51;70;155;146;154;33;116;39_M346"' +
+'	"106_M054" [label=M054]' +
+'	"2_M387" [label=M387]' +
+'	"106_M054" -> "2_M387"' +
+'	"106_M054" [label=M054]' +
+'	"78_M371" [label=M371]' +
+'	"106_M054" -> "78_M371"' +
+'	"107_M099" [label=M099]' +
+'	"84_M371" [label=M371]' +
+'	"107_M099" -> "84_M371"' +
+'	"108_M352~N" [label="M352~N"]' +
+'	"30_M370" [label=M370]' +
+'	"108_M352~N" -> "30_M370"' +
+'	"111_M219" [label=M219]' +
+'	"14_M048~E" [label="M048~E"]' +
+'	"111_M219" -> "14_M048~E"' +
+'	"112_M297" [label=M297]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"112_M297" -> "[EOE]"' +
+'	"114_M206~B" [label="M206~B"]' +
+'	"132;67_M371" [label=M371]' +
+'	"114_M206~B" -> "132;67_M371"' +
+'	"118_M387~C" [label="M387~C"]' +
+'	"142;3_M318~A2" [label="M318~A2"]' +
+'	"118_M387~C" -> "142;3_M318~A2"' +
+'	"119_M282" [label=M282]' +
+'	"21;50_M096" [label=M096]' +
+'	"119_M282" -> "21;50_M096"' +
+'	"120_M240" [label=M240]' +
+'	"69;83_M054" [label=M054]' +
+'	"120_M240" -> "69;83_M054"' +
+'	"121_M265~1" [label="M265~1"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"121_M265~1" -> "[EOE]"' +
+'	"122_M230~B" [label="M230~B"]' +
+'	"140_M262~A" [label="M262~A"]' +
+'	"122_M230~B" -> "140_M262~A"' +
+'	"126_M332~F" [label="M332~F"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"126_M332~F" -> "[EOE]"' +
+'	"128_M218" [label=M218]' +
+'	"130_M219" [label=M219]' +
+'	"128_M218" -> "130_M219"' +
+'	"128_M218" [label=M218]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"128_M218" -> "[EOE]"' +
+'	"129_M390" [label=M390]' +
+'	"52_M128" [label=M128]' +
+'	"129_M390" -> "52_M128"' +
+'	"130_M219" [label=M219]' +
+'	"161;51;70;155;146;154;33;116;39_M346" [label=M346]' +
+'	"130_M219" -> "161;51;70;155;146;154;33;116;39_M346"' +
+'	"133_M066~1" [label="M066~1"]' +
+'	"108_M352~N" [label="M352~N"]' +
+'	"133_M066~1" -> "108_M352~N"' +
+'	"134_M377~E" [label="M377~E"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"134_M377~E" -> "[EOE]"' +
+'	"135_M001" [label=M001]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"135_M001" -> "[EOE]"' +
+'	"136_M057~E" [label="M057~E"]' +
+'	"107_M099" [label=M099]' +
+'	"136_M057~E" -> "107_M099"' +
+'	"137_M260" [label=M260]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"137_M260" -> "[EOE]"' +
+'	"138_M338~B" [label="M338~B"]' +
+'	"119_M282" [label=M282]' +
+'	"138_M338~B" -> "119_M282"' +
+'	"138_M338~B" [label="M338~B"]' +
+'	"82;65_M066" [label=M066]' +
+'	"138_M338~B" -> "82;65_M066"' +
+'	"139_M388" [label=M388]' +
+'	"56_M387" [label=M387]' +
+'	"139_M388" -> "56_M387"' +
+'	"139_M388" [label=M388]' +
+'	"64_M262" [label=M262]' +
+'	"139_M388" -> "64_M262"' +
+'	"139_M388" [label=M388]' +
+'	"62_M051~B" [label="M051~B"]' +
+'	"139_M388" -> "62_M051~B"' +
+'	"139_M388" [label=M388]' +
+'	"122_M230~B" [label="M230~B"]' +
+'	"139_M388" -> "122_M230~B"' +
+'	"139_M388" [label=M388]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"139_M388" -> "[EOE]"' +
+'	"139_M388" [label=M388]' +
+'	"118_M387~C" [label="M387~C"]' +
+'	"139_M388" -> "118_M387~C"' +
+'	"139_M388" [label=M388]' +
+'	"129_M390" [label=M390]' +
+'	"139_M388" -> "129_M390"' +
+'	"139_M388" [label=M388]' +
+'	"136_M057~E" [label="M057~E"]' +
+'	"139_M388" -> "136_M057~E"' +
+'	"139_M388" [label=M388]' +
+'	"98_M354" [label=M354]' +
+'	"139_M388" -> "98_M354"' +
+'	"139_M388" [label=M388]' +
+'	"128_M218" [label=M218]' +
+'	"139_M388" -> "128_M218"' +
+'	"139_M388" [label=M388]' +
+'	"106_M054" [label=M054]' +
+'	"139_M388" -> "106_M054"' +
+'	"139_M388" [label=M388]' +
+'	"114_M206~B" [label="M206~B"]' +
+'	"139_M388" -> "114_M206~B"' +
+'	"139_M388" [label=M388]' +
+'	"45_M285~M" [label="M285~M"]' +
+'	"139_M388" -> "45_M285~M"' +
+'	"139_M388" [label=M388]' +
+'	"60_M491" [label=M491]' +
+'	"139_M388" -> "60_M491"' +
+'	"139_M388" [label=M388]' +
+'	"25_M304" [label=M304]' +
+'	"139_M388" -> "25_M304"' +
+'	"139_M388" [label=M388]' +
+'	"100_M003" [label=M003]' +
+'	"139_M388" -> "100_M003"' +
+'	"139_M388" [label=M388]' +
+'	"75_M072" [label=M072]' +
+'	"139_M388" -> "75_M072"' +
+'	"139_M388" [label=M388]' +
+'	"26_M124" [label=M124]' +
+'	"139_M388" -> "26_M124"' +
+'	"139_M388" [label=M388]' +
+'	"148_M380" [label=M380]' +
+'	"139_M388" -> "148_M380"' +
+'	"139_M388" [label=M388]' +
+'	"32_M024~1" [label="M024~1"]' +
+'	"139_M388" -> "32_M024~1"' +
+'	"139_M388" [label=M388]' +
+'	"37_M371" [label=M371]' +
+'	"139_M388" -> "37_M371"' +
+'	"139_M388" [label=M388]' +
+'	"138_M338~B" [label="M338~B"]' +
+'	"139_M388" -> "138_M338~B"' +
+'	"139_M388" [label=M388]' +
+'	"41_M066~A" [label="M066~A"]' +
+'	"139_M388" -> "41_M066~A"' +
+'	"139_M388" [label=M388]' +
+'	"79_M295~Y" [label="M295~Y"]' +
+'	"139_M388" -> "79_M295~Y"' +
+'	"139_M388" [label=M388]' +
+'	"149_M048~C" [label="M048~C"]' +
+'	"139_M388" -> "149_M048~C"' +
+'	"139_M388" [label=M388]' +
+'	"92_M305+X" [label="M305+X"]' +
+'	"139_M388" -> "92_M305+X"' +
+'	"139_M388" [label=M388]' +
+'	"86_M369" [label=M369]' +
+'	"139_M388" -> "86_M369"' +
+'	"139_M388" [label=M388]' +
+'	"49_M003~B" [label="M003~B"]' +
+'	"139_M388" -> "49_M003~B"' +
+'	"139_M388" [label=M388]' +
+'	"135_M001" [label=M001]' +
+'	"139_M388" -> "135_M001"' +
+'	"139_M388" [label=M388]' +
+'	"133_M066~1" [label="M066~1"]' +
+'	"139_M388" -> "133_M066~1"' +
+'	"139_M388" [label=M388]' +
+'	"44_M347" [label=M347]' +
+'	"139_M388" -> "44_M347"' +
+'	"139_M388" [label=M388]' +
+'	"150_M096" [label=M096]' +
+'	"139_M388" -> "150_M096"' +
+'	"139_M388" [label=M388]' +
+'	"151_M265~F" [label="M265~F"]' +
+'	"139_M388" -> "151_M265~F"' +
+'	"139_M388" [label=M388]' +
+'	"126_M332~F" [label="M332~F"]' +
+'	"139_M388" -> "126_M332~F"' +
+'	"139_M388" [label=M388]' +
+'	"121_M265~1" [label="M265~1"]' +
+'	"139_M388" -> "121_M265~1"' +
+'	"139_M388" [label=M388]' +
+'	"111_M219" [label=M219]' +
+'	"139_M388" -> "111_M219"' +
+'	"139_M388" [label=M388]' +
+'	"20_M080~A" [label="M080~A"]' +
+'	"139_M388" -> "20_M080~A"' +
+'	"139_M388" [label=M388]' +
+'	"73_M315" [label=M315]' +
+'	"139_M388" -> "73_M315"' +
+'	"139_M388" [label=M388]' +
+'	"145_M265" [label=M265]' +
+'	"139_M388" -> "145_M265"' +
+'	"139_M388" [label=M388]' +
+'	"82;65_M066" [label=M066]' +
+'	"139_M388" -> "82;65_M066"' +
+'	"140_M262~A" [label="M262~A"]' +
+'	"53_M096" [label=M096]' +
+'	"140_M262~A" -> "53_M096"' +
+'	"144_M099" [label=M099]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"144_M099" -> "[EOE]"' +
+'	"145_M265" [label=M265]' +
+'	"76_M263" [label=M263]' +
+'	"145_M265" -> "76_M263"' +
+'	"147_M106+M288" [label="M106+M288"]' +
+'	"7_M066~A" [label="M066~A"]' +
+'	"147_M106+M288" -> "7_M066~A"' +
+'	"148_M380" [label=M380]' +
+'	"77_M218+M320" [label="M218+M320"]' +
+'	"148_M380" -> "77_M218+M320"' +
+'	"149_M048~C" [label="M048~C"]' +
+'	"120_M240" [label=M240]' +
+'	"149_M048~C" -> "120_M240"' +
+'	"150_M096" [label=M096]' +
+'	"96_M329" [label=M329]' +
+'	"150_M096" -> "96_M329"' +
+'	"151_M265~F" [label="M265~F"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"151_M265~F" -> "[EOE]"' +
+'	"152_M066~A" [label="M066~A"]' +
+'	"162;95_M320" [label=M320]' +
+'	"152_M066~A" -> "162;95_M320"' +
+'	"160_M347" [label=M347]' +
+'	"134_M377~E" [label="M377~E"]' +
+'	"160_M347" -> "134_M377~E"' +
+'	"164_M352~O" [label="M352~O"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"164_M352~O" -> "[EOE]"' +
+'	"153;15;80;109;124;156_M288" [label=M288]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"153;15;80;109;124;156_M288" -> "[EOE]"' +
+'	"161;51;70;155;146;154;33;116;39_M346" [label=M346]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"161;51;70;155;146;154;33;116;39_M346" -> "[EOE]"' +
+'	"162;95_M320" [label=M320]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"162;95_M320" -> "[EOE]"' +
+'	"69;83_M054" [label=M054]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"69;83_M054" -> "[EOE]"' +
+'	"21;50_M096" [label=M096]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"21;50_M096" -> "[EOE]"' +
+'	"54;47;105;5_M371" [label=M371]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"54;47;105;5_M371" -> "[EOE]"' +
+'	"82;65_M066" [label=M066]' +
+'	"153;15;80;109;124;156_M288" [label=M288]' +
+'	"82;65_M066" -> "153;15;80;109;124;156_M288"' +
+'	"115;1_M218" [label=M218]' +
+'	"153;15;80;109;124;156_M288" [label=M288]' +
+'	"115;1_M218" -> "153;15;80;109;124;156_M288"' +
+'	"142;3_M318~A2" [label="M318~A2"]' +
+'	"54;47;105;5_M371" [label=M371]' +
+'	"142;3_M318~A2" -> "54;47;105;5_M371"' +
+'	"132;67_M371" [label=M371]' +
+'	"161;51;70;155;146;154;33;116;39_M346" [label=M346]' +
+'	"132;67_M371" -> "161;51;70;155;146;154;33;116;39_M346"' +
+'	"[BOE]" -> "139_M388"' +
+'}' +
+'');
+
+  // Render the graphlib object using d3.
+  var render = new dagreD3.render();
+  gg = render(d3.select("svg g"), g);
+
+  // Optional - resize the SVG element based on the contents.
+  var svg = document.querySelector('#graphContainer');
+  var bbox = svg.getBBox();
+  svg.style.width = bbox.width + 40.0 + "px";
+  svg.style.height = bbox.height + 40.0 + "px";
+
+  function hilite(n) {
+      var node = d3.select(n);
+      node.attr("class", "node hilite");  
+      console.log(node.data()[0]);
+  }
+  function base_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[0];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+  function inner_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[1];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+
+  function olap(a, b) {
+      return (base_sign(a) == base_sign(b)) || (inner_sign(a) == base_sign(b)) || (base_sign(a) == inner_sign(b)) || (inner_sign(a) == inner_sign(b))
+  }
+  function hilite_synonyms(n) {
+          var node = d3.select(n);
+      node_id = node.data()[0];
+      d3.selectAll(".node").filter(
+          u=> olap(u, node_id)
+      ).attr("class", "node synonym");
+  }
+  function hilite_parents(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getParents(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.w == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_parents(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  function hilite_children(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getChildren(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.v == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_children(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  d3.selectAll('.node').on('mouseover', function(d, i){
+      hilite_parents(this);
+      hilite_children(this);
+      hilite_synonyms(this);
+    }); 
+
+  d3.selectAll('.node').on('mouseout', function(d, i){
+    d3.selectAll('.node').attr("class", "node");
+    d3.selectAll('.edgePath').style("stroke", "black");
+    d3.selectAll('.edgePath').style("stroke-width", "1.5px");
+    }); 
+
+}
+
+  function getParents(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].w == node).map(u=>u[1].v);
+  }
+
+  function getChildren(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].v == node).map(u=>u[1].w);
+  }
+  
+  </script>
+  <svg id="graphContainer">
+    <g/>
+  </svg>
+</body>
+
+</html>

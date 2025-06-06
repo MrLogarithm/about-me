@@ -1,0 +1,227 @@
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.4/graphlib-dot.min.js"></script>
+<script src="https://dagrejs.github.io/project/dagre-d3/v0.5.0/dagre-d3.min.js"></script>
+
+<html>
+<head>
+<style>
+svg {
+  overflow: hidden;
+}
+.node rect {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: #fff;
+}
+.synonym rect {
+    fill: lightblue;
+}
+.hilite {
+    fill: red;
+}
+.hilite rect {
+  stroke: red;
+  stroke-width: 2.5px;
+  fill: pink;
+}
+.edgeLabel rect {
+  fill: #fff;
+}
+.edgePath {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: none;
+}
+</style>
+</head>
+<body>
+  <script type='text/javascript'>
+  var g;
+  window.onload = function() {
+  // Parse the DOT syntax into a graphlib object.
+  g = graphlibDot.read('digraph {' +
+'	graph [splines=ortho]' +
+'	"0_M205" [label=M205]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"0_M205" -> "[EOE]"' +
+'	"0_M205" [label=M205]' +
+'	"11_M149~A1" [label="M149~A1"]' +
+'	"0_M205" -> "11_M149~A1"' +
+'	"1_M205~C" [label="M205~C"]' +
+'	"10_M054+M365+M054~I" [label="M054+M365+M054~I"]' +
+'	"1_M205~C" -> "10_M054+M365+M054~I"' +
+'	"1_M205~C" [label="M205~C"]' +
+'	"22_M305+M153" [label="M305+M153"]' +
+'	"1_M205~C" -> "22_M305+M153"' +
+'	"1_M205~C" [label="M205~C"]' +
+'	"12_M318~A1" [label="M318~A1"]' +
+'	"1_M205~C" -> "12_M318~A1"' +
+'	"1_M205~C" [label="M205~C"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"1_M205~C" -> "[EOE]"' +
+'	"1_M205~C" [label="M205~C"]' +
+'	"7_M124" [label=M124]' +
+'	"1_M205~C" -> "7_M124"' +
+'	"2_M003~B" [label="M003~B"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"2_M003~B" -> "[EOE]"' +
+'	"5_M288" [label=M288]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"5_M288" -> "[EOE]"' +
+'	"7_M124" [label=M124]' +
+'	"23_M376" [label=M376]' +
+'	"7_M124" -> "23_M376"' +
+'	"8_M205~D" [label="M205~D"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"8_M205~D" -> "[EOE]"' +
+'	"8_M205~D" [label="M205~D"]' +
+'	"25_M375~A" [label="M375~A"]' +
+'	"8_M205~D" -> "25_M375~A"' +
+'	"10_M054+M365+M054~I" [label="M054+M365+M054~I"]' +
+'	"2_M003~B" [label="M003~B"]' +
+'	"10_M054+M365+M054~I" -> "2_M003~B"' +
+'	"11_M149~A1" [label="M149~A1"]' +
+'	"16_M069~AB" [label="M069~AB"]' +
+'	"11_M149~A1" -> "16_M069~AB"' +
+'	"12_M318~A1" [label="M318~A1"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"12_M318~A1" -> "[EOE]"' +
+'	"14_M205~B" [label="M205~B"]' +
+'	"15_M263" [label=M263]' +
+'	"14_M205~B" -> "15_M263"' +
+'	"15_M263" [label=M263]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"15_M263" -> "[EOE]"' +
+'	"16_M069~AB" [label="M069~AB"]' +
+'	"5_M288" [label=M288]' +
+'	"16_M069~AB" -> "5_M288"' +
+'	"22_M305+M153" [label="M305+M153"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"22_M305+M153" -> "[EOE]"' +
+'	"23_M376" [label=M376]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"23_M376" -> "[EOE]"' +
+'	"25_M375~A" [label="M375~A"]' +
+'	"[EOE]" [label="[EOE]"]' +
+'	"25_M375~A" -> "[EOE]"' +
+'	"[BOE]" -> "14_M205~B"' +
+'	"[BOE]" -> "0_M205"' +
+'	"[BOE]" -> "1_M205~C"' +
+'	"[BOE]" -> "8_M205~D"' +
+'}' +
+'');
+
+  // Render the graphlib object using d3.
+  var render = new dagreD3.render();
+  gg = render(d3.select("svg g"), g);
+
+  // Optional - resize the SVG element based on the contents.
+  var svg = document.querySelector('#graphContainer');
+  var bbox = svg.getBBox();
+  svg.style.width = bbox.width + 40.0 + "px";
+  svg.style.height = bbox.height + 40.0 + "px";
+
+  function hilite(n) {
+      var node = d3.select(n);
+      node.attr("class", "node hilite");  
+      console.log(node.data()[0]);
+  }
+  function base_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[0];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+  function inner_sign(sign) {
+      if (sign.includes("_")) {
+          sign = sign.split("_")[1];
+      }
+      if (sign.includes("+")) {
+          sign = sign.split("+")[1];
+      }
+      if (sign.includes("~")) {
+          sign = sign.split("~")[0];
+      }
+      return sign;
+  }
+
+  function olap(a, b) {
+      return (base_sign(a) == base_sign(b)) || (inner_sign(a) == base_sign(b)) || (base_sign(a) == inner_sign(b)) || (inner_sign(a) == inner_sign(b))
+  }
+  function hilite_synonyms(n) {
+          var node = d3.select(n);
+      node_id = node.data()[0];
+      d3.selectAll(".node").filter(
+          u=> olap(u, node_id)
+      ).attr("class", "node synonym");
+  }
+  function hilite_parents(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getParents(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.w == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_parents(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  function hilite_children(n) {
+      hilite(n);
+
+      var node = d3.select(n);
+      node_id = node.data()[0];
+      var parents = getChildren(node_id);
+      d3.selectAll(".edgePath").filter(u=>u.v == node_id).style("stroke", "red").style('stroke-width', '4px');
+        
+      for (idx in parents) {
+          p = g._nodes[parents[idx]];
+          try {
+          hilite_children(p.elem);
+          } catch (e) {
+          console.log(idx, parents, e);
+          }
+      }
+  }
+  d3.selectAll('.node').on('mouseover', function(d, i){
+      hilite_parents(this);
+      hilite_children(this);
+      hilite_synonyms(this);
+    }); 
+
+  d3.selectAll('.node').on('mouseout', function(d, i){
+    d3.selectAll('.node').attr("class", "node");
+    d3.selectAll('.edgePath').style("stroke", "black");
+    d3.selectAll('.edgePath').style("stroke-width", "1.5px");
+    }); 
+
+}
+
+  function getParents(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].w == node).map(u=>u[1].v);
+  }
+
+  function getChildren(node) {
+      return Object.entries(g._edgeObjs).filter(u=>u[1].v == node).map(u=>u[1].w);
+  }
+  
+  </script>
+  <svg id="graphContainer">
+    <g/>
+  </svg>
+</body>
+
+</html>
